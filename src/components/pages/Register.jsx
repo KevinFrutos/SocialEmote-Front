@@ -42,39 +42,19 @@ const register = () => {
 		<section className={css.container}>
 			<article className={css.articleContainer}>
 				<label htmlFor='user'>Usuario</label>
-				<input
-					type='text'
-					name='user'
-					onChange={event => setUser(event.target.value)}
-					placeholder='Introduce tu usuario'
-				/>
+				<input type='text' name='user' onChange={event => setUser(event.target.value)} placeholder='Usuario' />
 				<label htmlFor='name'>Nombre</label>
-				<input
-					type='text'
-					name='name'
-					onChange={event => setName(event.target.value)}
-					placeholder='Introduce tu nombre'
-				/>
+				<input type='text' name='name' onChange={event => setName(event.target.value)} placeholder='Nombre' />
 				<label htmlFor='lastName'>Apellido</label>
-				<input
-					type='text'
-					name='lastName'
-					onChange={event => setLastname(event.target.value)}
-					placeholder='Introduce tu apellido'
-				/>
+				<input type='text' name='lastName' onChange={event => setLastname(event.target.value)} placeholder='Apellido' />
 				<label htmlFor='email'>Email</label>
-				<input
-					type='text'
-					name='email'
-					onChange={event => setEmail(event.target.value)}
-					placeholder='Introduce tu Email'
-				/>
+				<input type='text' name='email' onChange={event => setEmail(event.target.value)} placeholder='Email' />
 				<label htmlFor='passwd'>Contraseña</label>
 				<input
 					type='password'
 					name='passwd'
 					onChange={event => setPasswd(event.target.value)}
-					placeholder='Introduce tu contraseña'
+					placeholder='Contraseña'
 				/>
 				<button type='submit' onClick={() => registrarse()}>
 					REGISTRATE

@@ -12,6 +12,18 @@ import Button from "./Button";
 import ImageLink from "./ImageLink";
 
 const Header = () => {
+	const logout = async () => {
+		try {
+			const respuesta = await fetch("http://localhost:9000/user/logout", {
+				method: "POST",
+				credentials: "include",
+			});
+			console.log(respuesta.status === 200 ? "OK" : respuesta.status);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<header className={css.headerContainer}>
 			<Link to='/'>
@@ -24,6 +36,7 @@ const Header = () => {
 				<Link to='/register'>
 					<Button buttonName='REGISTRARSE' />
 				</Link>
+				{/* <Button buttonName='LOGOUT' onClick={() => logout()} /> */}
 			</div>
 		</header>
 	);
