@@ -1,0 +1,13 @@
+:root {
+	--background-color: #333333;
+	--text-color: #333333;
+	--first-color: #ae00ff;
+	--second-color: #eeeeee;
+	--error-color: #FF0000;
+	--success-color: #00FF00;
+}
+
+body {
+	margin: 0;
+	background-color: var(--background-color);
+}

@@ -1,0 +1,12 @@
+.default {
+	padding: 1em;
+	font-weight: bold;
+	color: var(--second-color);
+	background-color: var(--first-color);
+}
+
+.default:hover {
+	cursor: pointer;
+	color: var(--first-color);
+	background-color: var(--second-color);
+}
