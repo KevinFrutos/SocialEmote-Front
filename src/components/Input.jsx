@@ -1,22 +1,16 @@
 //CSS
 import css from "./Input.module.css";
 
-//IMPORTS
-import { useState } from "react";
-
-const Input = ({labelName, forName, placeholderText}) => {
-	const [name, setName] = useState("");
-
+const Input = ({ labelName, forName, placeholderText, onChangeHandler, isPassword }) => {
 	return (
-		<span>
-			<label htmlFor={forName}>{labelName}</label>
-			<input
-				type='text'
-				name={forName}
-				onChange={event => setName(event.target.value)}
-				placeholder={placeholderText}
-			/>
-		</span>
+		<>
+			<label className={css.labelInput} htmlFor={forName}>{labelName}</label>
+			{isPassword === "true" ? (
+				<input type='password' className={css.inputClass} name={forName} onChange={onChangeHandler} placeholder={placeholderText} />
+			) : (
+				<input type='text' className={css.inputClass} name={forName} onChange={onChangeHandler} placeholder={placeholderText} />
+			)}
+		</>
 	);
 };
 

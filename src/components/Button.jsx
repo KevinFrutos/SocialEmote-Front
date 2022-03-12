@@ -1,9 +1,11 @@
 import css from "./Button.module.css";
 
-const Button = ({ buttonName, buttonClass = css.default }) => {
+const Button = ({ buttonName, buttonClass, clickHandler }) => {
 	return (
 		<>
-			<p className={buttonClass}>{buttonName}</p>
+			<p className={`${css.default} ${buttonClass}`} onClick={clickHandler}>
+				{buttonName}
+			</p>
 		</>
 	);
 };

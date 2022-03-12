@@ -6,12 +6,15 @@ import logoPath from "../assets/img/icon.svg";
 
 //IMPORTS
 import { Link } from "react-router-dom";
+//import { useCookies } from "react-cookie";
 
 //COMPONENTS
 import Button from "./Button";
 import ImageLink from "./ImageLink";
 
 const Header = () => {
+	//const [isLogged] = useCookies(["isLogged"]);
+
 	const logout = async () => {
 		try {
 			const respuesta = await fetch("http://localhost:9000/user/logout", {
@@ -24,19 +27,25 @@ const Header = () => {
 		}
 	};
 
+	//console.log(isLogged);
+
 	return (
 		<header className={css.headerContainer}>
 			<Link to='/'>
 				<ImageLink logoPath={logoPath} />
 			</Link>
 			<div className={css.menuContainer}>
-				<Link to='/login'>
-					<Button buttonName='LOGIN' />
-				</Link>
-				<Link to='/register'>
-					<Button buttonName='REGISTRARSE' />
-				</Link>
-				{/* <Button buttonName='LOGOUT' onClick={() => logout()} /> */}
+				{!document.cookie.includes("isLogged=true") && (
+					<Link to='/login'>
+						<Button buttonName='LOGIN' />
+					</Link>
+				)}
+				{!document.cookie.includes("isLogged=true") && (
+					<Link to='/register'>
+						<Button buttonName='REGISTRARSE' />
+					</Link>
+				)}
+				{document.cookie.includes("isLogged=true") && <Button buttonName='LOGOUT' clickHandler={logout} />}
 			</div>
 		</header>
 	);

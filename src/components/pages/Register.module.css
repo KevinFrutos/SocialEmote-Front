@@ -7,20 +7,11 @@
 }
 
 .articleContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	width: 30rem;
 }
 
-label {
-	display: none;
-}
-
-input,
-button {
-	width: 100%;
+.submitButton {
+	text-align: center;
 	padding: 0.5em;
 	font-size: 2em;
 }

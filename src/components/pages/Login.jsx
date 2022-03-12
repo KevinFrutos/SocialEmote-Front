@@ -4,6 +4,10 @@ import css from "./Login.module.css";
 //IMPORTS
 import { useState } from "react";
 
+//COMPONENTS
+import Input from "../Input";
+import Button from "../Button";
+
 const Login = () => {
 	//LOGIN VARIABLES
 	const [user, setUser] = useState("");
@@ -36,18 +40,20 @@ const Login = () => {
 	return (
 		<section className={css.container}>
 			<article className={css.articleContainer}>
-				<label htmlFor='user'>Usuario</label>
-				<input type='text' name='user' onChange={event => setUser(event.target.value)} placeholder='Usuario' />
-				<label htmlFor='passwd'>Contraseña</label>
-				<input
-					type='password'
-					name='passwd'
-					onChange={event => setPasswd(event.target.value)}
-					placeholder='Contraseña'
+				<Input
+					labelName='Usuario'
+					forName='user'
+					placeholderText='Usuario'
+					onChangeHandler={e => setUser(e.target.value)}
 				/>
-				<button type='submit' onClick={() => login()}>
-					LOGIN
-				</button>
+				<Input
+					labelName='Contraseña'
+					forName='passwd'
+					placeholderText='Contraseña'
+					onChangeHandler={e => setPasswd(e.target.value)}
+					isPassword='true'
+				/>
+				<Button buttonClass={css.submitButton} buttonName='LOGIN' clickHandler={login} />
 			</article>
 			<p className={css.successMessage}>{successMessage}</p>
 			<p className={css.errorMessage}>{errorMessage}</p>

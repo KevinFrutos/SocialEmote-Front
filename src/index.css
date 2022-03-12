@@ -3,8 +3,18 @@
 	--text-color: #333333;
 	--first-color: #ae00ff;
 	--second-color: #eeeeee;
-	--error-color: #FF0000;
-	--success-color: #00FF00;
+	--error-color: #ff0000;
+	--success-color: #00ff00;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 body {

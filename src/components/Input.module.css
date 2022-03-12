@@ -1,0 +1,9 @@
+.labelInput {
+	display: none;
+}
+
+.inputClass {
+	width: 100%;
+	padding: 0.5em;
+	font-size: 2em;
+}

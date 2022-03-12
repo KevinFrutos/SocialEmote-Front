@@ -4,6 +4,10 @@ import css from "./Register.module.css";
 //IMPORTS
 import { useState } from "react";
 
+//COMPONENTS
+import Input from "../Input";
+import Button from "../Button";
+
 const register = () => {
 	//USER VARIABLES
 	const [user, setUser] = useState("");
@@ -41,24 +45,38 @@ const register = () => {
 	return (
 		<section className={css.container}>
 			<article className={css.articleContainer}>
-				<label htmlFor='user'>Usuario</label>
-				<input type='text' name='user' onChange={event => setUser(event.target.value)} placeholder='Usuario' />
-				<label htmlFor='name'>Nombre</label>
-				<input type='text' name='name' onChange={event => setName(event.target.value)} placeholder='Nombre' />
-				<label htmlFor='lastName'>Apellido</label>
-				<input type='text' name='lastName' onChange={event => setLastname(event.target.value)} placeholder='Apellido' />
-				<label htmlFor='email'>Email</label>
-				<input type='text' name='email' onChange={event => setEmail(event.target.value)} placeholder='Email' />
-				<label htmlFor='passwd'>Contraseña</label>
-				<input
-					type='password'
-					name='passwd'
-					onChange={event => setPasswd(event.target.value)}
-					placeholder='Contraseña'
+				<Input
+					labelName='Usuario'
+					forName='user'
+					placeholderText='Usuario'
+					onChangeHandler={e => setUser(e.target.value)}
 				/>
-				<button type='submit' onClick={() => registrarse()}>
-					REGISTRATE
-				</button>
+				<Input
+					labelName='Nombre'
+					forName='name'
+					placeholderText='Nombre'
+					onChangeHandler={e => setName(e.target.value)}
+				/>
+				<Input
+					labelName='Apellido'
+					forName='lastName'
+					placeholderText='Apellido'
+					onChangeHandler={e => setLastname(e.target.value)}
+				/>
+				<Input
+					labelName='Email'
+					forName='email'
+					placeholderText='Email'
+					onChangeHandler={e => setEmail(e.target.value)}
+				/>
+				<Input
+					labelName='Contraseña'
+					forName='passwd'
+					placeholderText='Contraseña'
+					onChangeHandler={e => setPasswd(e.target.value)}
+					isPassword='true'
+				/>
+				<Button buttonClass={css.submitButton} buttonName='REGISTRATE' clickHandler={registrarse} />
 			</article>
 			<p className={css.successMessage}>{successMessage}</p>
 			<p className={css.errorMessage}>{errorMessage}</p>
