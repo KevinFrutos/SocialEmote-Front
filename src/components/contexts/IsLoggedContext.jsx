@@ -2,12 +2,14 @@ import { useState, createContext } from "react";
 
 export const IsLoggedContext = createContext();
 
-const LoggedContext = props => {
-	const initialState = false;
+const LoggedContext = ({ children }) => {
+	const [isLogged, setIsLogged] = useState(false);
 
-	const [isLogged, setIsLogged] = useState(initialState);
+	const updateIsLogged = value => {
+		setIsLogged(value);
+	};
 
-	return <IsLoggedContext.Provider value={{ isLogged, setIsLogged }}>{props.children}</IsLoggedContext.Provider>;
+	return <IsLoggedContext.Provider value={{ isLogged, updateIsLogged }}>{children}</IsLoggedContext.Provider>;
 };
 
 export default LoggedContext;

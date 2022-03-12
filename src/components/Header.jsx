@@ -17,7 +17,7 @@ import Button from "./Button";
 import ImageLink from "./ImageLink";
 
 const Header = () => {
-	const { isLogged, setIsLogged } = useContext(IsLoggedContext);
+	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
 	const [cookies] = useCookies(["isLogged"]);
 
 	const logout = async () => {
@@ -32,7 +32,8 @@ const Header = () => {
 		}
 	};
 
-	cookies.isLogged !== "true" ? setIsLogged(false) : setIsLogged(true);
+	cookies.isLogged !== "true" ? updateIsLogged(false) : updateIsLogged(true);
+	console.log(isLogged);
 
 	return (
 		<header className={css.headerContainer}>

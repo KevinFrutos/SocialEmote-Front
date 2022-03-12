@@ -14,7 +14,7 @@ import Button from "../Button";
 
 const Login = () => {
 	//OTHERS
-	const { isLogged, setIsLogged } = useContext(IsLoggedContext);
+	const { updateIsLogged } = useContext(IsLoggedContext);
 	const [cookies] = useCookies(["isLogged"]);
 
 	//LOGIN VARIABLES
@@ -44,7 +44,7 @@ const Login = () => {
 		}
 	};
 
-	cookies.isLogged !== "true" ? setIsLogged(false) : setIsLogged(true);
+	cookies.isLogged !== "true" ? updateIsLogged(false) : updateIsLogged(true);
 
 	return (
 		<section className={css.container}>
