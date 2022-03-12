@@ -5,15 +5,20 @@ import css from "./Header.module.css";
 import logoPath from "../assets/img/icon.svg";
 
 //IMPORTS
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-//import { useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
+
+//CONTEXTS
+import { IsLoggedContext } from "./contexts/IsLoggedContext";
 
 //COMPONENTS
 import Button from "./Button";
 import ImageLink from "./ImageLink";
 
 const Header = () => {
-	//const [isLogged] = useCookies(["isLogged"]);
+	const { isLogged, setIsLogged } = useContext(IsLoggedContext);
+	const [cookies] = useCookies(["isLogged"]);
 
 	const logout = async () => {
 		try {
@@ -27,7 +32,7 @@ const Header = () => {
 		}
 	};
 
-	//console.log(isLogged);
+	cookies.isLogged !== "true" ? setIsLogged(false) : setIsLogged(true);
 
 	return (
 		<header className={css.headerContainer}>
@@ -35,17 +40,18 @@ const Header = () => {
 				<ImageLink logoPath={logoPath} />
 			</Link>
 			<div className={css.menuContainer}>
-				{!document.cookie.includes("isLogged=true") && (
-					<Link to='/login'>
-						<Button buttonName='LOGIN' />
-					</Link>
+				{!isLogged && (
+					<>
+						<Link className={css.linkStyles} to='/login'>
+							<Button buttonName='LOGIN' />
+						</Link>
+						<Link className={css.linkStyles} to='/register'>
+							<Button buttonName='REGISTRARSE' />
+						</Link>
+					</>
 				)}
-				{!document.cookie.includes("isLogged=true") && (
-					<Link to='/register'>
-						<Button buttonName='REGISTRARSE' />
-					</Link>
-				)}
-				{document.cookie.includes("isLogged=true") && <Button buttonName='LOGOUT' clickHandler={logout} />}
+				{isLogged && <Button buttonName='LOGOUT' clickHandler={logout} />}
+				{/* <Button buttonName='LOGOUT' clickHandler={logout} /> */}
 			</div>
 		</header>
 	);

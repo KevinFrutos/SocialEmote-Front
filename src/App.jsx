@@ -4,6 +4,9 @@ import css from "./App.module.css";
 //IMPORTS
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+//CONTEXTS
+import LoggedContext from "./components/contexts/IsLoggedContext"
+
 //COMPONENTS
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,7 +16,7 @@ import Register from "./components/pages/Register";
 
 const App = () => {
 	return (
-		<>
+		<LoggedContext>
 			<Router>
 				<Header />
 				<Routes>
@@ -23,7 +26,7 @@ const App = () => {
 				</Routes>
 				<Footer />
 			</Router>
-		</>
+		</LoggedContext>
 	);
 };
 

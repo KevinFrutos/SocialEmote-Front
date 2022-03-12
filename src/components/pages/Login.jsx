@@ -2,13 +2,21 @@
 import css from "./Login.module.css";
 
 //IMPORTS
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useCookies } from "react-cookie";
+
+//CONTEXTS
+import { IsLoggedContext } from "../contexts/IsLoggedContext";
 
 //COMPONENTS
 import Input from "../Input";
 import Button from "../Button";
 
 const Login = () => {
+	//OTHERS
+	const { isLogged, setIsLogged } = useContext(IsLoggedContext);
+	const [cookies] = useCookies(["isLogged"]);
+
 	//LOGIN VARIABLES
 	const [user, setUser] = useState("");
 	const [passwd, setPasswd] = useState("");
@@ -29,13 +37,14 @@ const Login = () => {
 				passwd,
 			}),
 		});
-
 		if (respuesta.status === 200) {
 			setSuccessMessage("Has iniciado sesión.");
 		} else {
 			setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
 		}
 	};
+
+	cookies.isLogged !== "true" ? setIsLogged(false) : setIsLogged(true);
 
 	return (
 		<section className={css.container}>
