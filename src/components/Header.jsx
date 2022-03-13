@@ -5,12 +5,13 @@ import css from "./Header.module.css";
 import logoPath from "../assets/img/icon.svg";
 
 //IMPORTS
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 //CONTEXTS
 import { IsLoggedContext } from "./contexts/IsLoggedContext";
+import { UserDataContext } from "./contexts/UserDataContext";
 
 //COMPONENTS
 import Button from "./Button";
@@ -18,6 +19,7 @@ import ImageLink from "./ImageLink";
 
 const Header = () => {
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
+	const { userData } = useContext(UserDataContext);
 	const [cookies] = useCookies(["isLogged"]);
 
 	const logout = async () => {
@@ -62,7 +64,13 @@ const Header = () => {
 						</Link>
 					</>
 				)}
-				{isLogged && <Button buttonName='LOGOUT' clickHandler={logout} />}
+				{isLogged && (
+					<>
+						<p>Seguidores: {userData.followers_number}</p>
+						<p>Seguidos: {userData.following_number}</p>
+						<Button buttonName='LOGOUT' clickHandler={logout} />
+					</>
+				)}
 			</div>
 		</header>
 	);
