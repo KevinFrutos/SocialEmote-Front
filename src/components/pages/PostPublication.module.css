@@ -1,0 +1,28 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 5rem;
+}
+
+.articleContainer {
+	width: 30rem;
+}
+
+.submitButton {
+	text-align: center;
+	padding: 0.5em;
+	font-size: 2em;
+}
+
+p.errorMessage {
+	margin: 0;
+	padding: 0.1em;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.errorMessage {
+	color: var(--error-color);
+}

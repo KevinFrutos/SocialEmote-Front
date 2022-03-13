@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import PostPublication from "./components/pages/PostPublication";
 
 const App = () => {
 	return (
@@ -25,6 +26,7 @@ const App = () => {
 						<Route path='/' element={<Home />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/register' element={<Register />} />
+						<Route path='/publication' element={<PostPublication />} />
 					</Routes>
 					<Footer />
 				</Router>

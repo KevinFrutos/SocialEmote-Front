@@ -16,6 +16,8 @@ import { UserDataContext } from "./contexts/UserDataContext";
 //COMPONENTS
 import Button from "./Button";
 import ImageLink from "./ImageLink";
+import DisplayFollows from "./DisplayFollows";
+import Avatar from "./Avatar";
 
 const Header = () => {
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
@@ -40,6 +42,8 @@ const Header = () => {
 			console.log(error);
 		}
 	};
+
+	const addPublication = async () => {};
 
 	useEffect(() => {
 		if (cookies.isLogged === "true") {
@@ -69,6 +73,7 @@ const Header = () => {
 			<Link to='/'>
 				<ImageLink logoPath={logoPath} />
 			</Link>
+			<h1 className={css.title}>SOCIALEMOTE</h1>
 			<div className={css.menuContainer}>
 				{!isLogged && (
 					<>
@@ -82,9 +87,13 @@ const Header = () => {
 				)}
 				{isLogged && (
 					<>
-						<p>Seguidores: {userData.followers_number}</p>
-						<p>Seguidos: {userData.following_number}</p>
+						<Avatar />
+						<DisplayFollows valueData={userData.followers_number} txtData='Seguidores' />
+						<DisplayFollows valueData={userData.following_number} txtData='Siguiendo' />
 						<Button buttonName='LOGOUT' clickHandler={logout} />
+						<Link className={css.linkStyles} to='/publication'>
+							<Button buttonName='+' />
+						</Link>
 					</>
 				)}
 			</div>

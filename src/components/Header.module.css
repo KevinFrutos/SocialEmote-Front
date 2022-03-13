@@ -17,3 +17,8 @@
 .linkStyles {
 	text-decoration: none;
 }
+
+.title {
+	font-size: 3em;
+	color: var(--second-color);
+}
