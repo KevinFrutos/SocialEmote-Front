@@ -4,6 +4,7 @@ import css from "./Login.module.css";
 //IMPORTS
 import { useEffect, useState, useContext } from "react";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 //CONTEXTS
 import { IsLoggedContext } from "../contexts/IsLoggedContext";
@@ -16,13 +17,13 @@ const Login = () => {
 	//OTHERS
 	const { updateIsLogged } = useContext(IsLoggedContext);
 	const [cookies] = useCookies(["isLogged"]);
+	const navigateTo = useNavigate();
 
 	//LOGIN VARIABLES
 	const [user, setUser] = useState("");
 	const [passwd, setPasswd] = useState("");
 
 	//MESSAGES
-	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const login = async () => {
@@ -40,7 +41,7 @@ const Login = () => {
 			});
 			if (respuesta.status === 200) {
 				updateIsLogged(true);
-				setSuccessMessage("Has iniciado sesión.");
+				navigateTo("/");
 			} else {
 				updateIsLogged(false);
 				setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
@@ -77,7 +78,6 @@ const Login = () => {
 				/>
 				<Button buttonClass={css.submitButton} buttonName='LOGIN' clickHandler={login} />
 			</article>
-			<p className={css.successMessage}>{successMessage}</p>
 			<p className={css.errorMessage}>{errorMessage}</p>
 		</section>
 	);

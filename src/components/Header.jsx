@@ -29,7 +29,6 @@ const Header = () => {
 
 			if (respuesta.status === 200) {
 				updateIsLogged(false);
-				console.log("ok");
 			} else {
 				updateIsLogged(true);
 				console.log(respuesta.status);
@@ -64,7 +63,6 @@ const Header = () => {
 					</>
 				)}
 				{isLogged && <Button buttonName='LOGOUT' clickHandler={logout} />}
-				{/* <Button buttonName='LOGOUT' clickHandler={logout} /> */}
 			</div>
 		</header>
 	);

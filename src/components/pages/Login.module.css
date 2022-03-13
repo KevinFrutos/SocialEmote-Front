@@ -16,16 +16,11 @@
 	font-size: 2em;
 }
 
-p.successMessage,
 p.errorMessage {
 	margin: 0;
 	padding: 0.1em;
 	font-size: 1.5em;
 	font-weight: bold;
-}
-
-.successMessage {
-	color: var(--success-color);
 }
 
 .errorMessage {
