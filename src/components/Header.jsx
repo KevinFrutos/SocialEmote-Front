@@ -19,7 +19,7 @@ import ImageLink from "./ImageLink";
 
 const Header = () => {
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
-	const { userData } = useContext(UserDataContext);
+	const { userData, setUserData } = useContext(UserDataContext);
 	const [cookies] = useCookies(["isLogged"]);
 
 	const logout = async () => {
@@ -31,6 +31,7 @@ const Header = () => {
 
 			if (respuesta.status === 200) {
 				updateIsLogged(false);
+				setUserData({});
 			} else {
 				updateIsLogged(true);
 				console.log(respuesta.status);
@@ -46,7 +47,22 @@ const Header = () => {
 		} else {
 			updateIsLogged(false);
 		}
-	}, []);
+	}, [cookies.isLogged]);
+
+	useEffect(async () => {
+		if (isLogged) {
+			try {
+				const respuesta = await fetch("http://localhost:9000/user/follow", {
+					method: "GET",
+					credentials: "include",
+				});
+				const datosUsuario = await respuesta.json();
+				setUserData(datosUsuario);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	}, [isLogged]);
 
 	return (
 		<header className={css.headerContainer}>

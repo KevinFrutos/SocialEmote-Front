@@ -2,8 +2,7 @@
 import css from "./Login.module.css";
 
 //IMPORTS
-import { useEffect, useState, useContext } from "react";
-import { useCookies } from "react-cookie";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 //CONTEXTS
@@ -16,7 +15,6 @@ import Button from "../Button";
 const Login = () => {
 	//OTHERS
 	const { updateIsLogged } = useContext(IsLoggedContext);
-	const [cookies] = useCookies(["isLogged"]);
 	const navigateTo = useNavigate();
 
 	//LOGIN VARIABLES
@@ -51,14 +49,6 @@ const Login = () => {
 			setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
 		}
 	};
-
-	useEffect(() => {
-		if (cookies.isLogged === "true") {
-			updateIsLogged(true);
-		} else {
-			updateIsLogged(false);
-		}
-	}, []);
 
 	return (
 		<section className={css.container}>
