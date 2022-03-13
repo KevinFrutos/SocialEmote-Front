@@ -5,7 +5,7 @@ import css from "./Header.module.css";
 import logoPath from "../assets/img/icon.svg";
 
 //IMPORTS
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
@@ -26,14 +26,26 @@ const Header = () => {
 				method: "POST",
 				credentials: "include",
 			});
-			console.log(respuesta.status === 200 ? "OK" : respuesta.status);
+
+			if (respuesta.status === 200) {
+				updateIsLogged(false);
+				console.log("ok");
+			} else {
+				updateIsLogged(true);
+				console.log(respuesta.status);
+			}
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	cookies.isLogged !== "true" ? updateIsLogged(false) : updateIsLogged(true);
-	console.log(isLogged);
+	useEffect(() => {
+		if (cookies.isLogged === "true") {
+			updateIsLogged(true);
+		} else {
+			updateIsLogged(false);
+		}
+	}, []);
 
 	return (
 		<header className={css.headerContainer}>

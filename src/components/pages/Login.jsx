@@ -2,7 +2,7 @@
 import css from "./Login.module.css";
 
 //IMPORTS
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useCookies } from "react-cookie";
 
 //CONTEXTS
@@ -26,25 +26,38 @@ const Login = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const login = async () => {
-		const respuesta = await fetch("http://localhost:9000/user/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			credentials: "include",
-			body: JSON.stringify({
-				user,
-				passwd,
-			}),
-		});
-		if (respuesta.status === 200) {
-			setSuccessMessage("Has iniciado sesión.");
-		} else {
+		try {
+			const respuesta = await fetch("http://localhost:9000/user/login", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				credentials: "include",
+				body: JSON.stringify({
+					user,
+					passwd,
+				}),
+			});
+			if (respuesta.status === 200) {
+				updateIsLogged(true);
+				setSuccessMessage("Has iniciado sesión.");
+			} else {
+				updateIsLogged(false);
+				setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
+			}
+		} catch (error) {
+			console.log(error);
 			setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
 		}
 	};
 
-	cookies.isLogged !== "true" ? updateIsLogged(false) : updateIsLogged(true);
+	useEffect(() => {
+		if (cookies.isLogged === "true") {
+			updateIsLogged(true);
+		} else {
+			updateIsLogged(false);
+		}
+	}, []);
 
 	return (
 		<section className={css.container}>
