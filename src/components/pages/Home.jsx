@@ -1,22 +1,31 @@
 //CSS
 import css from "./Home.module.css";
 
-import { useEffect } from "react";
+//IMPORTS
+import { useEffect, useState } from "react";
+
+//COMPONENT
+import Publication from "../Publication";
 
 const Home = () => {
+	const [publicaciones, setPublicaciones] = useState([]);
+
 	useEffect(async () => {
 		const respuesta = await fetch("http://localhost:9000/user/publication", {
 			method: "GET",
 			credentials: "include",
 		});
 		const datos = await respuesta.json();
-		console.log(datos);
-	});
+		setPublicaciones(datos);
+		//console.log(datos);
+	}, []);
 
 	return (
-		<>
-			<p>Home</p>
-		</>
+		<section className={css.default}>
+			{publicaciones.map(item => {
+				return <Publication key={item._id} user={item.user} description={item.description} />;
+			})}
+		</section>
 	);
 };
 

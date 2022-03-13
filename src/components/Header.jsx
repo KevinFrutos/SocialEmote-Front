@@ -43,8 +43,6 @@ const Header = () => {
 		}
 	};
 
-	const addPublication = async () => {};
-
 	useEffect(() => {
 		if (cookies.isLogged === "true") {
 			updateIsLogged(true);
@@ -56,7 +54,7 @@ const Header = () => {
 	useEffect(async () => {
 		if (isLogged) {
 			try {
-				const respuesta = await fetch("http://localhost:9000/user/follow", {
+				const respuesta = await fetch("http://localhost:9000/user/data", {
 					method: "GET",
 					credentials: "include",
 				});

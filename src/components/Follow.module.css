@@ -1,0 +1,16 @@
+.default {
+	width: 1em;
+	padding: 0.1em;
+}
+
+.default:hover {
+	cursor: pointer;
+}
+
+.follow {
+	filter: invert(68%) sepia(59%) saturate(6305%) hue-rotate(89deg) brightness(124%) contrast(120%);
+}
+
+.unfollow {
+	filter: invert(37%) sepia(100%) saturate(7482%) hue-rotate(4deg) brightness(97%) contrast(130%);
+}
