@@ -13,7 +13,7 @@
 .submitButton {
 	text-align: center;
 	padding: 0.5em;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 p.successMessage,
@@ -30,4 +30,13 @@ p.errorMessage {
 
 .errorMessage {
 	color: var(--error-color);
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		padding: 2em;
+	}
+	.articleContainer {
+		width: 100%;
+	}
 }

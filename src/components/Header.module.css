@@ -22,3 +22,18 @@
 	font-size: 3em;
 	color: var(--second-color);
 }
+
+@media screen and (max-width: 800px) {
+	.title {
+		display: none;
+	}
+	.menuContainer {
+		flex-direction: column;
+		gap: 0.1em;
+	}
+
+	.menuContainer p {
+		width: 150px;
+		text-align: center;
+	}
+}
