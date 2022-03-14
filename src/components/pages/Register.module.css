@@ -1,13 +1,17 @@
 .container {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	padding: 5rem;
+	justify-content: space-evenly;
+	padding: 3rem;
 }
 
 .articleContainer {
 	width: 30rem;
+}
+
+.textAside {
+	font-size: 1.5em;
+	color: var(--text-color);
 }
 
 .submitButton {
@@ -34,6 +38,7 @@ p.errorMessage {
 
 @media screen and (max-width: 600px) {
 	.container {
+		flex-direction: column;
 		padding: 2em;
 	}
 	.articleContainer {

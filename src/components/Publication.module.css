@@ -14,13 +14,13 @@
     align-items: center;
     justify-content: center;
     font-size: 2em;
-    color: var(--second-color);
+    color: var(--text-color);
     gap: 0.1em;
 }
 
 .description{
     font-size: 2em;
-    color: var(--second-color);
+    color: var(--text-color);
 }
 
 

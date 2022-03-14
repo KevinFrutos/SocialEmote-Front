@@ -20,7 +20,7 @@
 
 .title {
 	font-size: 3em;
-	color: var(--second-color);
+	color: var(--text-color);
 }
 
 @media screen and (max-width: 800px) {

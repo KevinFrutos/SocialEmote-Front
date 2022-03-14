@@ -77,9 +77,17 @@ const register = () => {
 					isPassword='true'
 				/>
 				<Button buttonClass={css.submitButton} buttonName='REGISTRATE' clickHandler={registrarse} />
+				<p className={css.successMessage}>{successMessage}</p>
+				<p className={css.errorMessage}>{errorMessage}</p>
 			</article>
-			<p className={css.successMessage}>{successMessage}</p>
-			<p className={css.errorMessage}>{errorMessage}</p>
+			<article className={css.articleContainer}>
+				<p className={css.textAside}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet perspiciatis, possimus aliquid cupiditate
+					reprehenderit ab voluptas quod officia? Alias aliquid consectetur autem voluptas illum, iure fugiat beatae,
+					dicta necessitatibus iusto voluptatem praesentium ullam recusandae error reprehenderit repellat! Aspernatur
+					maiores ipsum minima repudiandae, aperiam beatae quis cum dolore enim odit quae!
+				</p>
+			</article>
 		</section>
 	);
 };
