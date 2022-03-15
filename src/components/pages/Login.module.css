@@ -5,14 +5,19 @@
 	padding: 3rem;
 }
 
-.articleContainer {
+.asideContainer {
 	width: 30rem;
 }
 
-.textAside {
+.textDefault {
 	font-size: 1.5em;
 	color: var(--text-color);
 }
+
+.textBottom {
+	padding: 1em 15em;
+}
+
 .submitButton {
 	text-align: center;
 	padding: 0.5em;
@@ -35,7 +40,7 @@ p.errorMessage {
 		flex-direction: column;
 		padding: 2em;
 	}
-	.articleContainer {
+	.asideContainer {
 		width: 100%;
 	}
 }

@@ -51,30 +51,40 @@ const Login = () => {
 	};
 
 	return (
-		<section className={css.container}>
-			<article className={css.articleContainer}>
-				<Input
-					labelName='Usuario'
-					forName='user'
-					placeholderText='Usuario'
-					onChangeHandler={e => setUser(e.target.value)}
-				/>
-				<Input
-					labelName='Contraseña'
-					forName='passwd'
-					placeholderText='Contraseña'
-					onChangeHandler={e => setPasswd(e.target.value)}
-					isPassword='true'
-				/>
-				<Button buttonClass={css.submitButton} buttonName='LOGIN' clickHandler={login} />
-				<p className={css.errorMessage}>{errorMessage}</p>
+		<section>
+			<article>
+				<p className={`${css.textDefault} ${css.textBottom}`}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, vero? Sint omnis nesciunt, laboriosam quidem
+					quibusdam, officia adipisci provident id dignissimos cupiditate amet aut pariatur facere voluptates at magni
+					incidunt? Porro corporis minus incidunt voluptatum debitis quisquam! Itaque, quaerat illo nihil consequatur,
+					animi ut non perferendis accusantium adipisci, magnam harum!
+				</p>
 			</article>
-			<article className={css.articleContainer}>
-				<p className={css.textAside}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet perspiciatis, possimus aliquid cupiditate
-					reprehenderit ab voluptas quod officia? Alias aliquid consectetur autem voluptas illum, iure fugiat beatae,
-					dicta necessitatibus iusto voluptatem praesentium ullam recusandae error reprehenderit repellat! Aspernatur
-					maiores ipsum minima repudiandae, aperiam beatae quis cum dolore enim odit quae!
+			<article className={css.container}>
+				<aside className={css.asideContainer}>
+					<Input
+						labelName='Usuario'
+						forName='user'
+						placeholderText='Usuario'
+						onChangeHandler={e => setUser(e.target.value)}
+					/>
+					<Input
+						labelName='Contraseña'
+						forName='passwd'
+						placeholderText='Contraseña'
+						onChangeHandler={e => setPasswd(e.target.value)}
+						isPassword='true'
+					/>
+					<Button buttonClass={css.submitButton} buttonName='LOGIN' clickHandler={login} />
+					<p className={css.errorMessage}>{errorMessage}</p>
+				</aside>
+			</article>
+			<article>
+				<p className={`${css.textDefault} ${css.textBottom}`}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, vero? Sint omnis nesciunt, laboriosam quidem
+					quibusdam, officia adipisci provident id dignissimos cupiditate amet aut pariatur facere voluptates at magni
+					incidunt? Porro corporis minus incidunt voluptatum debitis quisquam! Itaque, quaerat illo nihil consequatur,
+					animi ut non perferendis accusantium adipisci, magnam harum!
 				</p>
 			</article>
 		</section>
