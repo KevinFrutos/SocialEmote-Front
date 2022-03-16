@@ -7,7 +7,7 @@ const Avatar = () => {
 
 	return (
 		<>
-			<img className={css.default} src={`${avatarsPath}avatar-${randomAvatar}.svg`} alt='sadsa' />
+			<img className={css.default} src={`${avatarsPath}avatar-${randomAvatar}.svg`} alt={`Avatar numero ${randomAvatar}`} />
 		</>
 	);
 };

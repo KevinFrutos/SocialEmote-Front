@@ -35,12 +35,12 @@
 		gap: 0.1em;
 	}
 
-	.navContainerUnLogged p {
+	.navContainerUnLogged span {
 		width: 150px;
 		text-align: center;
 	}
 
-	.navContainerLogged p {
+	.navContainerLogged span {
 		width: fit-content;
 	}
 

@@ -1,8 +1,8 @@
-.labelInput {
+.defaultLabel {
 	display: none;
 }
 
-.inputClass {
+.defaultInput {
 	width: 100%;
 	padding: 0.5em;
 	font-size: 1.5em;

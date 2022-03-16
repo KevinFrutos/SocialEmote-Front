@@ -4,13 +4,13 @@ import css from "./Input.module.css";
 const Input = ({ labelName, forName, placeholderText, onChangeHandler, isPassword, isText }) => {
 	return (
 		<>
-			<label className={css.labelInput} htmlFor={forName}>
+			<label className={css.defaultLabel} htmlFor={forName}>
 				{labelName}
 			</label>
 			{isPassword === "true" ? (
 				<input
 					type='password'
-					className={css.inputClass}
+					className={css.defaultInput}
 					name={forName}
 					onChange={onChangeHandler}
 					placeholder={placeholderText}
@@ -18,7 +18,7 @@ const Input = ({ labelName, forName, placeholderText, onChangeHandler, isPasswor
 			) : isText === "true" ? (
 				<textarea
 					type='text'
-					className={css.inputClass}
+					className={css.defaultInput}
 					name={forName}
 					onChange={onChangeHandler}
 					placeholder={placeholderText}
@@ -28,7 +28,7 @@ const Input = ({ labelName, forName, placeholderText, onChangeHandler, isPasswor
 			) : (
 				<input
 					type='text'
-					className={css.inputClass}
+					className={css.defaultInput}
 					name={forName}
 					onChange={onChangeHandler}
 					placeholder={placeholderText}
