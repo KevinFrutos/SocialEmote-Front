@@ -44,11 +44,7 @@ const Header = () => {
 	};
 
 	useEffect(() => {
-		if (cookies.isLogged === "true") {
-			updateIsLogged(true);
-		} else {
-			updateIsLogged(false);
-		}
+		cookies.isLogged === "true" ? updateIsLogged(true) : updateIsLogged(false);
 	}, [cookies.isLogged]);
 
 	useEffect(async () => {
@@ -72,29 +68,29 @@ const Header = () => {
 				<ImageLink logoPath={logoPath} />
 			</Link>
 			<h1 className={css.title}>SOCIALEMOTE</h1>
-			<div className={css.menuContainer}>
-				{!isLogged && (
-					<>
-						<Link className={css.linkStyles} to='/login'>
-							<Button buttonName='LOGIN' />
-						</Link>
-						<Link className={css.linkStyles} to='/register'>
-							<Button buttonName='REGISTRARSE' />
-						</Link>
-					</>
-				)}
-				{isLogged && (
-					<>
-						<Avatar />
+			{!isLogged && (
+				<nav className={css.navContainerUnLogged}>
+					<Link className={css.linkStyles} to='/login'>
+						<Button buttonName='LOGIN' />
+					</Link>
+					<Link className={css.linkStyles} to='/register'>
+						<Button buttonName='REGISTRARSE' />
+					</Link>
+				</nav>
+			)}
+			{isLogged && (
+				<nav className={css.navContainerLogged}>
+					<Avatar />
+					<span className={css.showFollows}>
 						<DisplayFollows valueData={userData.followers_number} txtData='Seguidores' />
 						<DisplayFollows valueData={userData.following_number} txtData='Siguiendo' />
-						<Button buttonName='LOGOUT' clickHandler={logout} />
-						<Link className={css.linkStyles} to='/publication'>
-							<Button buttonName='+' />
-						</Link>
-					</>
-				)}
-			</div>
+					</span>
+					<Button buttonName='LOGOUT' clickHandler={logout} />
+					<Link className={css.linkStyles} to='/publication'>
+						<Button buttonName='+' />
+					</Link>
+				</nav>
+			)}
 		</header>
 	);
 };

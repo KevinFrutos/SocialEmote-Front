@@ -26,3 +26,12 @@ p.errorMessage {
 .errorMessage {
 	color: var(--error-color);
 }
+
+@media screen and (max-width: 800px) {
+	.container{
+		padding: 5em 2em;
+	}
+	.articleContainer {
+		width: 100%;
+	}
+}

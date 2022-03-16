@@ -35,6 +35,13 @@ p.errorMessage {
 	color: var(--error-color);
 }
 
+@media screen and (max-width: 1000px) {
+	.textBottom {
+		padding: 1em 3em;
+	}
+
+}
+
 @media screen and (max-width: 600px) {
 	.container {
 		flex-direction: column;
@@ -42,5 +49,8 @@ p.errorMessage {
 	}
 	.asideContainer {
 		width: 100%;
+	}
+	.textBottom {
+		padding: 1em 1em;
 	}
 }
