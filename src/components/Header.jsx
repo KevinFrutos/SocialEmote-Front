@@ -80,7 +80,9 @@ const Header = () => {
 			)}
 			{isLogged && (
 				<nav className={css.navContainerLogged}>
-					<Avatar />
+					<Link className={css.linkStyles} to='/profile'>
+						<Avatar />
+					</Link>
 					<span className={css.showFollows}>
 						<DisplayFollows valueData={userData.followers_number} txtData='Seguidores' />
 						<DisplayFollows valueData={userData.following_number} txtData='Siguiendo' />

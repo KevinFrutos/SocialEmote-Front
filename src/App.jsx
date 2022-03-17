@@ -15,6 +15,7 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import PostPublication from "./components/pages/PostPublication";
+import Profile from "./components/pages/Profile";
 
 const App = () => {
 	return (
@@ -27,6 +28,7 @@ const App = () => {
 						<Route path='/login' element={<Login />} />
 						<Route path='/register' element={<Register />} />
 						<Route path='/publication' element={<PostPublication />} />
+						<Route path='/profile' element={<Profile />} />
 					</Routes>
 					<Footer />
 				</Router>
