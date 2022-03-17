@@ -1,5 +1,6 @@
 :root {
-	--background-color: #333333;
+	--default-background-color: #333333;
+	--background-color: #1f1f1f;
 	--text-color: #eeeeee;
 	--text-secondary-color: #9900ff;
 	--first-color: #7209b7;
@@ -20,5 +21,5 @@ html {
 
 body {
 	margin: 0;
-	background-color: var(--background-color);
+	background-color: var(--default-background-color);
 }
