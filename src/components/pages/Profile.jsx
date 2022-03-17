@@ -35,7 +35,7 @@ const Profile = () => {
 						{followers_number > 0 ? (
 							<ol>
 								{followers.map(item => (
-									<li>{item.user}</li>
+									<li key={item._id}>{item.user}</li>
 								))}
 							</ol>
 						) : null}
@@ -45,7 +45,7 @@ const Profile = () => {
 						{following_number > 0 ? (
 							<ol>
 								{following.map(item => (
-									<li>{item.user}</li>
+									<li key={item._id}>{item.user}</li>
 								))}
 							</ol>
 						) : null}
