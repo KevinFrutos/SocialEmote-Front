@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //CONTEXTS
 import LoggedContext from "./components/contexts/IsLoggedContext";
 import UserContext from "./components/contexts/UserDataContext";
+import PublicationsContext from "./components/contexts/PublicationsContext";
 
 //COMPONENTS
 import Header from "./components/Header";
@@ -21,17 +22,19 @@ const App = () => {
 	return (
 		<LoggedContext>
 			<UserContext>
-				<Router>
-					<Header />
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/login' element={<Login />} />
-						<Route path='/register' element={<Register />} />
-						<Route path='/publication' element={<PostPublication />} />
-						<Route path='/profile' element={<Profile />} />
-					</Routes>
-					<Footer />
-				</Router>
+				<PublicationsContext>
+					<Router>
+						<Header />
+						<Routes>
+							<Route path='/' element={<Home />} />
+							<Route path='/login' element={<Login />} />
+							<Route path='/register' element={<Register />} />
+							<Route path='/publication' element={<PostPublication />} />
+							<Route path='/profile' element={<Profile />} />
+						</Routes>
+						<Footer />
+					</Router>
+				</PublicationsContext>
 			</UserContext>
 		</LoggedContext>
 	);

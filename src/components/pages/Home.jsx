@@ -2,13 +2,16 @@
 import css from "./Home.module.css";
 
 //IMPORTS
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+
+//CONTEXTS
+import { PublicationsDataContext } from "../contexts/PublicationsContext";
 
 //COMPONENT
 import Publication from "../Publication";
 
 const Home = () => {
-	const [publicaciones, setPublicaciones] = useState([]);
+	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
 
 	useEffect(async () => {
 		const respuesta = await fetch("http://localhost:9000/user/publication", {
@@ -23,7 +26,7 @@ const Home = () => {
 	return (
 		<section className={css.default}>
 			{publicaciones.map(item => {
-				return <Publication key={item._id} user={item.user} description={item.description} />;
+				return <Publication key={item._id} idPost={item._id} user={item.user} description={item.description} />;
 			})}
 		</section>
 	);

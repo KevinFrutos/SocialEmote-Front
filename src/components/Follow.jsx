@@ -55,7 +55,7 @@ const Follow = ({ user }) => {
 	return (
 		<>
 			{!userData.followers || userData.user === user ? (
-				<span></span>
+				<></>
 			) : userData.following.map(item => item.user).includes(user) ? (
 				<img className={`${css.default} ${css.unfollow}`} src={unfollowIcon} onClick={unfollow} />
 			) : (
