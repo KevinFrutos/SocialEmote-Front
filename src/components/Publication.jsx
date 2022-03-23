@@ -1,6 +1,8 @@
 //CSS
 import css from "./Publication.module.css";
 
+import menuImgPath from "../assets/img/vertical-dots-menu.svg";
+
 //COMPONENT
 import Avatar from "./Avatar";
 import Follow from "./Follow";
@@ -13,9 +15,10 @@ const Publication = ({ idPost, user, description }) => {
 				<Avatar />
 				{user}
 				<Follow user={user} />
+				{/* <img src={menuImgPath} alt='Menu dots' /> */}
 			</span>
 			<span className={css.description}>{description}</span>
-			<HeartLike idPost={idPost} user={user} />
+			<HeartLike idPost={idPost} />
 		</article>
 	);
 };

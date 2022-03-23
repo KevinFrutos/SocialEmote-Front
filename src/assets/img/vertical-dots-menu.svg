@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+	<title>3844442-dot-menu-more-vertical_110310-svg</title>
+	<defs>
+		<image  width="6" height="6" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGAQMAAADaAn0LAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA7u7ugVRVeAAAAAJ0Uk5TAP9bkSK1AAAADklEQVR4nGOoYPgDhRUAHUwE4V9aqREAAAAASUVORK5CYII="/>
+		<image  width="6" height="6" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGAQMAAADaAn0LAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA7u7ugVRVeAAAAAJ0Uk5TAP9bkSK1AAAADklEQVR4nGOoYPgDhRUAHUwE4V9aqREAAAAASUVORK5CYII="/>
+		<image  width="6" height="6" id="img3" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGAQMAAADaAn0LAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA7u7ugVRVeAAAAAJ0Uk5TAP9bkSK1AAAADklEQVR4nGOoYPgDhRUAHUwE4V9aqREAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="XMLID_294_" href="#img1" x="13" y="13"/>
+	<use id="XMLID_295_" href="#img2" x="13" y="23"/>
+	<use id="XMLID_297_" href="#img3" x="13" y="3"/>
+</svg>
