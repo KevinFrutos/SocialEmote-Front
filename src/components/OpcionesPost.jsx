@@ -16,26 +16,25 @@ const OpcionesPost = ({ user }) => {
 	const { userData } = useContext(UserDataContext);
 	const [isToggle, setIsToggle] = useState(false);
 
-	const toggleMenu = () => (isToggle ? setIsToggle(false) : setIsToggle(true));
-
 	return (
 		<>
-			<img onClick={toggleMenu} className={css.defaultButton} src={menuImgPath} alt='Menu dots' />
+			<img onMouseOver={() => setIsToggle(true)} className={css.defaultButton} src={menuImgPath} alt='Menu dots' />
 			{isToggle ? (
-				<ul className={css.default}>
-					{!userData.followers || userData.user === user ? (
+				<ul onMouseLeave={() => setIsToggle(false)} className={css.default}>
+					{!userData.followers ? (
 						<>
 							<Link className={css.linkStyles} to='/login'>
 								<li>Seguir</li>
 							</Link>
-							<li onClick={toggleMenu}>Cerrar</li>
+						</>
+					) : userData.user === user ? (
+						<>
+							<li>Editar Post</li>
+							<li>Eliminar</li>
 						</>
 					) : (
 						<>
 							<Follow user={user} />
-							<li>Editar Post</li>
-							<li>Eliminar</li>
-							<li onClick={toggleMenu}>Cerrar</li>
 						</>
 					)}
 				</ul>

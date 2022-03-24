@@ -62,12 +62,12 @@ const HeartLike = ({ idPost }) => {
 	return (
 		<>
 			{!userData.user || !publicaciones ? (
-				<Link className={css.linkStyles} to='/login'>
-					<span className={css.defaultContainer}>
+				<span className={css.defaultContainer}>
+					<Link className={css.linkStyles} to='/login'>
 						<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' />
+					</Link>
 						<span>{publicaciones[postIndex].likes.length ?? 0}</span>
-					</span>
-				</Link>
+				</span>
 			) : userData.user && !publicaciones[postIndex].likes.map(item => item.user_like).includes(userData.user) ? (
 				<span className={css.defaultContainer}>
 					<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' onClick={like} />
