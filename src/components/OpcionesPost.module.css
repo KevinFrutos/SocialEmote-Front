@@ -37,8 +37,15 @@
 	text-decoration: none;
 }
 
+.defaultMobile {
+	display: none;
+}
+
 @media screen and (max-width: 800px) {
 	.default {
 		width: 80%;
+	}
+	.defaultMobile {
+		display: block;
 	}
 }
