@@ -1,40 +1,40 @@
-.default{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    padding: 1em;
+.default {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50%;
+	padding: 1em;
 	background-color: var(--background-color);
-    border-radius: 1em;
+	border-radius: 1em;
 }
 
-.userContainer{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 2em;
-    color: var(--text-color);
-    gap: 0.1em;
-    position: relative;
+.userContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 2em;
+	color: var(--text-color);
+	gap: 0.1em;
+	position: relative;
 }
 
-.user{
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+.user {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
 }
 
-.description{
-    display: flex;
-    justify-content: center;
-    font-size: 2em;
-    color: var(--text-color);
-    padding: 1em 0em;
+.description {
+	display: flex;
+	justify-content: center;
+	font-size: 2em;
+	color: var(--text-color);
+	padding: 1em 0em;
+	overflow-wrap: anywhere;
 }
 
-
-@media screen and (max-width: 1200px){
-    .default{
-        width: 90%;
-    }
+@media screen and (max-width: 1200px) {
+	.default {
+		width: 90%;
+	}
 }

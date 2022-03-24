@@ -1,3 +1,15 @@
-.default{
-    width: 50px;
+.defaultContainer {
+	display: flex;
+	align-items: center;
+	gap: 0.2em;
+	font-size: 1.5em;
+	color: var(--text-color);
+}
+
+.default {
+	width: 50px;
+}
+
+.linkStyles {
+	text-decoration: none;
 }

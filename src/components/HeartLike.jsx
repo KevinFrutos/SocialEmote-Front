@@ -7,6 +7,7 @@ import unlikeImgPath from "../assets/img/unlike.svg";
 
 //IMPORTS
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 //CONTEXT
 import { UserDataContext } from "./contexts/UserDataContext";
@@ -18,7 +19,7 @@ const HeartLike = ({ idPost }) => {
 
 	const postIndex = publicaciones.findIndex(item => item._id === idPost);
 
-	const follow = async () => {
+	const like = async () => {
 		try {
 			const respuesta = await fetch("http://localhost:9000/user/publication/like", {
 				method: "POST",
@@ -38,7 +39,7 @@ const HeartLike = ({ idPost }) => {
 		}
 	};
 
-	const unfollow = async () => {
+	const unlike = async () => {
 		try {
 			const respuesta = await fetch("http://localhost:9000/user/publication/like", {
 				method: "DELETE",
@@ -61,11 +62,22 @@ const HeartLike = ({ idPost }) => {
 	return (
 		<>
 			{!userData.user || !publicaciones ? (
-				<></>
+				<Link className={css.linkStyles} to='/login'>
+					<span className={css.defaultContainer}>
+						<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' />
+						<span>{publicaciones[postIndex].likes.length ?? 0}</span>
+					</span>
+				</Link>
 			) : userData.user && !publicaciones[postIndex].likes.map(item => item.user_like).includes(userData.user) ? (
-				<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' onClick={follow} />
+				<span className={css.defaultContainer}>
+					<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' onClick={like} />
+					<span>{publicaciones[postIndex].likes.length ?? 0}</span>
+				</span>
 			) : (
-				<img className={css.default} src={unlikeImgPath} alt='Corazón con carita enfadada' onClick={unfollow} />
+				<span className={css.defaultContainer}>
+					<img className={css.default} src={unlikeImgPath} alt='Corazón con carita enfadada' onClick={unlike} />
+					<span>{publicaciones[postIndex].likes.length ?? 0}</span>
+				</span>
 			)}
 		</>
 	);

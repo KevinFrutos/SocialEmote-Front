@@ -7,6 +7,7 @@ import Follow from "./Follow";
 
 //IMPORTS
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 //CONTEXT
 import { UserDataContext } from "./contexts/UserDataContext";
@@ -19,16 +20,16 @@ const OpcionesPost = ({ user }) => {
 
 	return (
 		<>
-			<img
-				onClick={toggleMenu}
-				className={css.defaultButton}
-				src={menuImgPath}
-				alt='Menu dots'
-			/>
+			<img onClick={toggleMenu} className={css.defaultButton} src={menuImgPath} alt='Menu dots' />
 			{isToggle ? (
 				<ul className={css.default}>
 					{!userData.followers || userData.user === user ? (
-						<></>
+						<>
+							<Link className={css.linkStyles} to='/login'>
+								<li>Seguir</li>
+							</Link>
+							<li onClick={toggleMenu}>Cerrar</li>
+						</>
 					) : (
 						<>
 							<Follow user={user} />

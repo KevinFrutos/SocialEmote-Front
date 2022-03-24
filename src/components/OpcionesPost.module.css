@@ -33,6 +33,10 @@
 	background-color: var(--first-color);
 }
 
+.linkStyles {
+	text-decoration: none;
+}
+
 @media screen and (max-width: 800px) {
 	.default {
 		width: 80%;

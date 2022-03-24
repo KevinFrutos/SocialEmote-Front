@@ -3,7 +3,6 @@ import css from "./Publication.module.css";
 
 //COMPONENT
 import Avatar from "./Avatar";
-import Follow from "./Follow";
 import HeartLike from "./HeartLike";
 import OpcionesPost from "./OpcionesPost";
 
@@ -15,7 +14,6 @@ const Publication = ({ idPost, user, description }) => {
 					<Avatar />
 					{user}
 				</span>
-				{/* <Follow user={user} /> */}
 				<OpcionesPost user={user} />
 			</span>
 			<span className={css.description}>{description}</span>
