@@ -54,12 +54,12 @@ const Follow = ({ user }) => {
 
 	return (
 		<>
-			{!userData.followers || userData.user === user ? (
-				<></>
-			) : userData.following.map(item => item.user).includes(user) ? (
-				<img className={`${css.default} ${css.unfollow}`} src={unfollowIcon} onClick={unfollow} />
+			{userData.following.map(item => item.user).includes(user) ? (
+				// <img className={`${css.default} ${css.unfollow}`} src={unfollowIcon} onClick={unfollow} />
+				<li onClick={unfollow}>Dejar de seguir</li>
 			) : (
-				<img className={`${css.default} ${css.follow}`} src={followIcon} onClick={follow} />
+				// <img className={`${css.default} ${css.follow}`} src={followIcon} onClick={follow} />
+				<li onClick={follow}>Seguir</li>
 			)}
 		</>
 	);
