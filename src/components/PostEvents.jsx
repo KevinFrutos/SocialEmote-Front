@@ -1,19 +1,22 @@
 //CSS
-import css from "./HeartLike.module.css";
+import css from "./PostEvents.module.css";
 
 //RESOURCES
 import likeImgPath from "../assets/img/like.svg";
 import unlikeImgPath from "../assets/img/unlike.svg";
+import commentImgPath from "../assets/img/comment.svg";
+
+//COMPONENTS
+import EmoteCounter from "./EmoteCounter";
 
 //IMPORTS
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 
 //CONTEXT
 import { UserDataContext } from "./contexts/UserDataContext";
 import { PublicationsDataContext } from "./contexts/PublicationsContext";
 
-const HeartLike = ({ idPost }) => {
+const PostEvents = ({ idPost }) => {
 	const { userData } = useContext(UserDataContext);
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
 
@@ -59,28 +62,58 @@ const HeartLike = ({ idPost }) => {
 		}
 	};
 
+	const comment = () => {};
+
 	return (
-		<>
+		<span className={css.defaultContainer}>
 			{!userData.user || !publicaciones ? (
-				<span className={css.defaultContainer}>
-					<Link className={css.linkStyles} to='/login'>
-						<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' />
-					</Link>
-						<span>{publicaciones[postIndex].likes.length ?? 0}</span>
-				</span>
+				<>
+					<EmoteCounter
+						toPath='/login'
+						imgPath={likeImgPath}
+						altDescription='Corazón con carita sonriente'
+						counter={publicaciones[postIndex].likes.length}
+					/>
+					<EmoteCounter
+						toPath='/login'
+						imgPath={commentImgPath}
+						altDescription='Caja de comentario flotante de color morado'
+						counter={publicaciones[postIndex].comments.length}
+					/>
+				</>
 			) : userData.user && !publicaciones[postIndex].likes.map(item => item.user_like).includes(userData.user) ? (
-				<span className={css.defaultContainer}>
-					<img className={css.default} src={likeImgPath} alt='Corazón con carita sonriente' onClick={like} />
-					<span>{publicaciones[postIndex].likes.length ?? 0}</span>
-				</span>
+				<>
+					<EmoteCounter
+						onClickHandler={like}
+						imgPath={likeImgPath}
+						altDescription='Corazón con carita sonriente'
+						counter={publicaciones[postIndex].likes.length}
+					/>
+					<EmoteCounter
+						onClickHandler={comment}
+						imgPath={commentImgPath}
+						altDescription='Caja de comentario flotante de color morado'
+						counter={publicaciones[postIndex].comments.length}
+					/>
+				</>
 			) : (
-				<span className={css.defaultContainer}>
-					<img className={css.default} src={unlikeImgPath} alt='Corazón con carita enfadada' onClick={unlike} />
-					<span>{publicaciones[postIndex].likes.length ?? 0}</span>
-				</span>
+				<>
+					<EmoteCounter
+						onClickHandler={unlike}
+						imgPath={unlikeImgPath}
+						altDescription='Corazón con carita enfadada'
+						counter={publicaciones[postIndex].likes.length}
+					/>
+					<EmoteCounter
+						onClickHandler={comment}
+						imgPath={commentImgPath}
+						altDescription='Caja de comentario flotante de color morado'
+						counter={publicaciones[postIndex].comments.length}
+					/>
+				</>
 			)}
-		</>
+		</span>
 	);
 };
 
-export default HeartLike;
+export default PostEvents;

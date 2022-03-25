@@ -3,7 +3,7 @@ import css from "./Publication.module.css";
 
 //COMPONENT
 import Avatar from "./Avatar";
-import HeartLike from "./HeartLike";
+import PostEvents from "./PostEvents";
 import OpcionesPost from "./OpcionesPost";
 
 const Publication = ({ idPost, user, description }) => {
@@ -17,7 +17,7 @@ const Publication = ({ idPost, user, description }) => {
 				<OpcionesPost user={user} />
 			</span>
 			<span className={css.description}>{description}</span>
-			<HeartLike idPost={idPost} />
+			<PostEvents idPost={idPost} />
 		</article>
 	);
 };
