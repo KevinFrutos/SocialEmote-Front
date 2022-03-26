@@ -10,5 +10,5 @@
 .default:hover {
 	cursor: pointer;
 	color: var(--first-color);
-	color: var(--text-color);
+	background-color: var(--text-color);
 }

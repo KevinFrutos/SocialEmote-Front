@@ -1,0 +1,6 @@
+.defaultValores {
+    padding: 0.2em;
+	width: 100%;
+	font-size: 1em;
+	color: var(--text-secondary-color);
+}

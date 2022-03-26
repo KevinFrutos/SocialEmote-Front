@@ -3,7 +3,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-    padding: 2em;
+	padding: 2em;
 }
 
 .titleContainer {
@@ -27,10 +27,16 @@
 	font-size: 1.5em;
 }
 
-.defaultList li {
-    padding: 0.2em;
+.defaultList li,
+.defaultValores {
+	padding: 0.2em;
 }
 
-.defaultValores{
-    color: var(--text-secondary-color);
+.defaultValores {
+	font-size: 1em;
+	color: var(--text-secondary-color);
+}
+
+.updateButton{
+	text-align: center;
 }
