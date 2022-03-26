@@ -8,6 +8,9 @@ import { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
 
+//CONTROLLERS
+import {url} from "../controllers/variables"
+
 const register = () => {
 	//USER VARIABLES
 	const [user, setUser] = useState("");
@@ -21,7 +24,7 @@ const register = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const registrarse = async () => {
-		const respuesta = await fetch("http://localhost:9000/user/register", {
+		const respuesta = await fetch(`${url}/user/register`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -12,6 +12,9 @@ import { IsLoggedContext } from "../contexts/IsLoggedContext";
 import Input from "../Input";
 import Button from "../Button";
 
+//CONTROLLERS
+import {url} from "../controllers/variables"
+
 const Login = () => {
 	//OTHERS
 	const { updateIsLogged } = useContext(IsLoggedContext);
@@ -26,7 +29,7 @@ const Login = () => {
 
 	const login = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/login", {
+			const respuesta = await fetch(`${url}/user/login`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

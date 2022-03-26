@@ -19,6 +19,9 @@ import ImageLink from "./ImageLink";
 import DisplayFollows from "./DisplayFollows";
 import Avatar from "./Avatar";
 
+//CONTROLLERS
+import {url} from "./controllers/variables"
+
 const Header = () => {
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
 	const { userData, setUserData } = useContext(UserDataContext);
@@ -26,7 +29,7 @@ const Header = () => {
 
 	const logout = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/logout", {
+			const respuesta = await fetch(`${url}/user/logout`, {
 				method: "POST",
 				credentials: "include",
 			});
@@ -50,7 +53,7 @@ const Header = () => {
 	useEffect(async () => {
 		if (isLogged) {
 			try {
-				const respuesta = await fetch("http://localhost:9000/user/data", {
+				const respuesta = await fetch(`${url}/user/data`, {
 					method: "GET",
 					credentials: "include",
 				});

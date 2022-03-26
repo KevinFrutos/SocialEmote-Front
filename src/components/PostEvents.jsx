@@ -16,6 +16,9 @@ import { useContext } from "react";
 import { UserDataContext } from "./contexts/UserDataContext";
 import { PublicationsDataContext } from "./contexts/PublicationsContext";
 
+//CONTROLLERS
+import {url} from "./controllers/variables"
+
 const PostEvents = ({ idPost }) => {
 	const { userData } = useContext(UserDataContext);
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
@@ -24,7 +27,7 @@ const PostEvents = ({ idPost }) => {
 
 	const like = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/publication/like", {
+			const respuesta = await fetch(`${url}/user/publication/like`, {
 				method: "POST",
 				credentials: "include",
 				headers: {
@@ -44,7 +47,7 @@ const PostEvents = ({ idPost }) => {
 
 	const unlike = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/publication/like", {
+			const respuesta = await fetch(`${url}/user/publication/like`, {
 				method: "DELETE",
 				credentials: "include",
 				headers: {

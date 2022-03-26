@@ -1,22 +1,21 @@
 //CSS
 import css from "./Follow.module.css";
 
-//RESOURCES
-import followIcon from "../assets/img/follow.svg";
-import unfollowIcon from "../assets/img/unfollow.svg";
-
 //IMPORTS
 import { useContext } from "react";
 
 //CONTEXT
 import { UserDataContext } from "./contexts/UserDataContext";
 
+//CONTROLLERS
+import {url} from "./controllers/variables"
+
 const Follow = ({ user }) => {
 	const { userData, setUserData } = useContext(UserDataContext);
 
 	const follow = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/follow", {
+			const respuesta = await fetch(`${url}/user/follow`, {
 				method: "PUT",
 				credentials: "include",
 				headers: {
@@ -35,7 +34,7 @@ const Follow = ({ user }) => {
 
 	const unfollow = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/unfollow", {
+			const respuesta = await fetch(`${url}/user/unfollow`, {
 				method: "PUT",
 				credentials: "include",
 				headers: {

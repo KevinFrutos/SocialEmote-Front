@@ -12,6 +12,9 @@ import Button from "../Button";
 //CONTEXTS
 import { UserDataContext } from "../contexts/UserDataContext";
 
+//CONTROLLERS
+import {url} from "../controllers/variables"
+
 const Profile = () => {
 	const { userData, setUserData } = useContext(UserDataContext);
 	const { user, name, last_name, email, followers, followers_number, following, following_number } = userData;
@@ -22,7 +25,7 @@ const Profile = () => {
 
 	const updateData = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/data", {
+			const respuesta = await fetch(`${url}/user/data`, {
 				method: "PUT",
 				credentials: "include",
 				headers: {

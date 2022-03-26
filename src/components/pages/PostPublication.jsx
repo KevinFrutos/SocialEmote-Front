@@ -7,6 +7,9 @@ import css from "./PostPublication.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+//CONTROLLERS
+import {url} from "../controllers/variables"
+
 const PostPublication = () => {
 	//OTHERS
 	const navigateTo = useNavigate();
@@ -19,7 +22,7 @@ const PostPublication = () => {
 
 	const addPublication = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/publication", {
+			const respuesta = await fetch(`${url}/user/publication`, {
 				method: "POST",
 				credentials: "include",
 				headers: {

@@ -13,6 +13,9 @@ import { Link } from "react-router-dom";
 import { UserDataContext } from "./contexts/UserDataContext";
 import { PublicationsDataContext } from "./contexts/PublicationsContext";
 
+//CONTROLLERS
+import {url} from "./controllers/variables"
+
 const OpcionesPost = ({ user, idPost }) => {
 	const { userData } = useContext(UserDataContext);
 	const [isToggle, setIsToggle] = useState(false);
@@ -20,7 +23,7 @@ const OpcionesPost = ({ user, idPost }) => {
 
 	const eliminarPost = async () => {
 		try {
-			const respuesta = await fetch("http://localhost:9000/user/publication", {
+			const respuesta = await fetch(`${url}/user/publication`, {
 				method: "DELETE",
 				credentials: "include",
 				headers: {

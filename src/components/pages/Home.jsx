@@ -10,11 +10,14 @@ import { PublicationsDataContext } from "../contexts/PublicationsContext";
 //COMPONENT
 import Publication from "../Publication";
 
+//CONTROLLERS
+import {url} from "../controllers/variables"
+
 const Home = () => {
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
 
 	useEffect(async () => {
-		const respuesta = await fetch("http://localhost:9000/user/publication", {
+		const respuesta = await fetch(`${url}/user/publication`, {
 			method: "GET",
 			credentials: "include",
 		});
