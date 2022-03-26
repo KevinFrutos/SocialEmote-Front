@@ -9,7 +9,7 @@ import Input from "../Input";
 import Button from "../Button";
 
 //CONTROLLERS
-import {url} from "../controllers/variables"
+import { registrarse } from "../controllers/httpRequests";
 
 const register = () => {
 	//USER VARIABLES
@@ -23,22 +23,10 @@ const register = () => {
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const registrarse = async () => {
-		const respuesta = await fetch(`${url}/user/register`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				user,
-				name,
-				last_name,
-				email,
-				passwd,
-			}),
-		});
+	const registrarseHandler = async () => {
+		const respuesta = await registrarse(user, name, last_name, email, passwd);
 
-		if (respuesta.status === 200) {
+		if (respuesta === 200) {
 			setSuccessMessage("Su registro se ha completado con exito.");
 		} else {
 			setErrorMessage("Ha habido un problema en el registro, intentelo de nuevo mas tarde.");
@@ -88,7 +76,7 @@ const register = () => {
 						onChangeHandler={e => setPasswd(e.target.value)}
 						isPassword='true'
 					/>
-					<Button buttonClass={css.submitButton} buttonName='REGISTRATE' clickHandler={registrarse} />
+					<Button buttonClass={css.submitButton} buttonName='REGISTRATE' clickHandler={registrarseHandler} />
 					<p className={css.successMessage}>{successMessage}</p>
 					<p className={css.errorMessage}>{errorMessage}</p>
 				</aside>

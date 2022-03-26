@@ -14,27 +14,17 @@ import { UserDataContext } from "./contexts/UserDataContext";
 import { PublicationsDataContext } from "./contexts/PublicationsContext";
 
 //CONTROLLERS
-import {url} from "./controllers/variables"
+import { eliminarPost } from "./controllers/httpRequests";
 
 const OpcionesPost = ({ user, idPost }) => {
 	const { userData } = useContext(UserDataContext);
 	const [isToggle, setIsToggle] = useState(false);
 	const { setPublicaciones } = useContext(PublicationsDataContext);
 
-	const eliminarPost = async () => {
+	const eliminarPostHandler = async () => {
 		try {
-			const respuesta = await fetch(`${url}/user/publication`, {
-				method: "DELETE",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					idPost,
-				}),
-			});
-			const data = await respuesta.json();
-			respuesta.status === 200 ? setPublicaciones(data) : console.log(respuesta.status);
+			const data = await eliminarPost(idPost);
+			data ? setPublicaciones(data) : console.log("Ha ocurrido un error");
 		} catch (error) {
 			console.log(error);
 		}
@@ -57,7 +47,7 @@ const OpcionesPost = ({ user, idPost }) => {
 					) : userData.user === user ? (
 						<>
 							<li>Editar Post</li>
-							<li onClick={eliminarPost}>Eliminar</li>
+							<li onClick={eliminarPostHandler}>Eliminar</li>
 							<li className={css.defaultMobile} onClick={() => setIsToggle(false)}>
 								Cerrar
 							</li>

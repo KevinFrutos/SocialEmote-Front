@@ -11,19 +11,18 @@ import { PublicationsDataContext } from "../contexts/PublicationsContext";
 import Publication from "../Publication";
 
 //CONTROLLERS
-import {url} from "../controllers/variables"
+import { getPublications } from "../controllers/httpRequests";
 
 const Home = () => {
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
 
 	useEffect(async () => {
-		const respuesta = await fetch(`${url}/user/publication`, {
-			method: "GET",
-			credentials: "include",
-		});
-		const datos = await respuesta.json();
-		setPublicaciones(datos);
-		//console.log(datos);
+		try {
+			const datos = await getPublications();
+			datos ? setPublicaciones(datos) : console.log("Error en la peticion");
+		} catch (error) {
+			console.log(error);
+		}
 	}, []);
 
 	return (

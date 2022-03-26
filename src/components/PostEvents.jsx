@@ -17,7 +17,7 @@ import { UserDataContext } from "./contexts/UserDataContext";
 import { PublicationsDataContext } from "./contexts/PublicationsContext";
 
 //CONTROLLERS
-import {url} from "./controllers/variables"
+import { like, unlike } from "./controllers/httpRequests";
 
 const PostEvents = ({ idPost }) => {
 	const { userData } = useContext(UserDataContext);
@@ -25,41 +25,19 @@ const PostEvents = ({ idPost }) => {
 
 	const postIndex = publicaciones.findIndex(item => item._id === idPost);
 
-	const like = async () => {
+	const likeHandler = async () => {
 		try {
-			const respuesta = await fetch(`${url}/user/publication/like`, {
-				method: "POST",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					idPost,
-					user_like: userData.user,
-				}),
-			});
-			const data = await respuesta.json();
-			respuesta.status === 200 ? setPublicaciones(data) : console.log(respuesta.status);
+			const data = await like(idPost, userData.user);
+			data ? setPublicaciones(data) : console.log("Ha ocurrido un error");
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	const unlike = async () => {
+	const unlikeHandler = async () => {
 		try {
-			const respuesta = await fetch(`${url}/user/publication/like`, {
-				method: "DELETE",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					idPost,
-					user_like: userData.user,
-				}),
-			});
-			const data = await respuesta.json();
-			respuesta.status === 200 ? setPublicaciones(data) : console.log(respuesta.status);
+			const data = await unlike(idPost, userData.user);
+			data ? setPublicaciones(data) : console.log("Ha ocurrido un error");
 		} catch (error) {
 			console.log(error);
 		}
@@ -87,7 +65,7 @@ const PostEvents = ({ idPost }) => {
 			) : userData.user && !publicaciones[postIndex].likes.map(item => item.user_like).includes(userData.user) ? (
 				<>
 					<EmoteCounter
-						onClickHandler={like}
+						onClickHandler={likeHandler}
 						imgPath={likeImgPath}
 						altDescription='Corazón con carita sonriente'
 						counter={publicaciones[postIndex].likes.length}
@@ -102,7 +80,7 @@ const PostEvents = ({ idPost }) => {
 			) : (
 				<>
 					<EmoteCounter
-						onClickHandler={unlike}
+						onClickHandler={unlikeHandler}
 						imgPath={unlikeImgPath}
 						altDescription='Corazón con carita enfadada'
 						counter={publicaciones[postIndex].likes.length}

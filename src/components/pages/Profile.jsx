@@ -13,7 +13,7 @@ import Button from "../Button";
 import { UserDataContext } from "../contexts/UserDataContext";
 
 //CONTROLLERS
-import {url} from "../controllers/variables"
+import { updateData } from "../controllers/httpRequests";
 
 const Profile = () => {
 	const { userData, setUserData } = useContext(UserDataContext);
@@ -23,30 +23,22 @@ const Profile = () => {
 	const newEmail = useRef();
 	const newPassword = useRef();
 
-	const updateData = async () => {
+	const updateDataHandler = async () => {
 		try {
-			const respuesta = await fetch(`${url}/user/data`, {
-				method: "PUT",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					name: newName.current.value,
-					last_name: newLast_name.current.value,
-					email: newEmail.current.value,
-					password: newPassword.current.value,
-				}),
-			});
-			const data = await respuesta.json();
-			if (respuesta.status === 200) {
+			const data = await updateData(
+				newName.current.value,
+				newLast_name.current.value,
+				newEmail.current.value,
+				newPassword.current.value
+			);
+			if (data) {
 				setUserData(data);
 				newName.current.value = "";
 				newLast_name.current.value = "";
 				newEmail.current.value = "";
 				newPassword.current.value = "";
 			} else {
-				console.log(respuesta.status);
+				console.log("Error al actualizar los datos");
 			}
 		} catch (error) {
 			console.log(error);
@@ -72,7 +64,7 @@ const Profile = () => {
 						refIndex={newPassword}
 					/>
 					<li>
-						<Button buttonName='ACTUALIZAR' buttonClass={css.updateButton} clickHandler={updateData} />
+						<Button buttonName='ACTUALIZAR' buttonClass={css.updateButton} clickHandler={updateDataHandler} />
 					</li>
 					<li>
 						Numero de seguidores: <span className={css.defaultValores}>{followers_number}</span>

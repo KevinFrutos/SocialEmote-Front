@@ -20,19 +20,16 @@ import DisplayFollows from "./DisplayFollows";
 import Avatar from "./Avatar";
 
 //CONTROLLERS
-import {url} from "./controllers/variables"
+import { logout, getUserData } from "./controllers/httpRequests";
 
 const Header = () => {
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
 	const { userData, setUserData } = useContext(UserDataContext);
 	const [cookies] = useCookies(["isLogged"]);
 
-	const logout = async () => {
+	const logoutHandler = async () => {
 		try {
-			const respuesta = await fetch(`${url}/user/logout`, {
-				method: "POST",
-				credentials: "include",
-			});
+			const respuesta = await logout();
 
 			if (respuesta.status === 200) {
 				updateIsLogged(false);
@@ -53,12 +50,8 @@ const Header = () => {
 	useEffect(async () => {
 		if (isLogged) {
 			try {
-				const respuesta = await fetch(`${url}/user/data`, {
-					method: "GET",
-					credentials: "include",
-				});
-				const datosUsuario = await respuesta.json();
-				setUserData(datosUsuario);
+				const datosUsuario = await getUserData();
+				datosUsuario ? setUserData(datosUsuario) : console.log("Ha ocurrido un error");
 			} catch (error) {
 				console.log(error);
 			}
@@ -90,7 +83,7 @@ const Header = () => {
 						<DisplayFollows valueData={userData.followers_number} txtData='Seguidores' />
 						<DisplayFollows valueData={userData.following_number} txtData='Siguiendo' />
 					</span>
-					<Button buttonName='LOGOUT' clickHandler={logout} />
+					<Button buttonName='LOGOUT' clickHandler={logoutHandler} />
 					<Link className={css.linkStyles} to='/publication'>
 						<Button buttonName='+' />
 					</Link>

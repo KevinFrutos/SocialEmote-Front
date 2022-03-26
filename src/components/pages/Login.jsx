@@ -13,7 +13,7 @@ import Input from "../Input";
 import Button from "../Button";
 
 //CONTROLLERS
-import {url} from "../controllers/variables"
+import { login } from "../controllers/httpRequests";
 
 const Login = () => {
 	//OTHERS
@@ -27,20 +27,11 @@ const Login = () => {
 	//MESSAGES
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const login = async () => {
+	const loginHandler = async () => {
 		try {
-			const respuesta = await fetch(`${url}/user/login`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				credentials: "include",
-				body: JSON.stringify({
-					user,
-					passwd,
-				}),
-			});
-			if (respuesta.status === 200) {
+			const respuesta = await login(user, passwd);
+
+			if (respuesta === 200) {
 				updateIsLogged(true);
 				navigateTo("/");
 			} else {
@@ -49,7 +40,6 @@ const Login = () => {
 			}
 		} catch (error) {
 			console.log(error);
-			setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
 		}
 	};
 
@@ -78,7 +68,7 @@ const Login = () => {
 						onChangeHandler={e => setPasswd(e.target.value)}
 						isPassword='true'
 					/>
-					<Button buttonClass={css.submitButton} buttonName='LOGIN' clickHandler={login} />
+					<Button buttonClass={css.submitButton} buttonName='LOGIN' clickHandler={loginHandler} />
 					<p className={css.errorMessage}>{errorMessage}</p>
 				</aside>
 			</article>
