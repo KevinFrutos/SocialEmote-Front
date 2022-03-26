@@ -14,7 +14,7 @@ const Publication = ({ idPost, user, description }) => {
 					<Avatar />
 					{user}
 				</span>
-				<OpcionesPost user={user} />
+				<OpcionesPost user={user} idPost={idPost} />
 			</span>
 			<span className={css.description}>{description}</span>
 			<PostEvents idPost={idPost} />
