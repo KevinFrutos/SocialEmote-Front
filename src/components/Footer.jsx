@@ -16,6 +16,7 @@ const Footer = () => {
 			<Link to='/'>
 				<ImageLink logoPath={logoPath} />
 			</Link>
+			<p className={css.copyright}>Created and designed by © <a href="https://github.com/KevinFrutos/SocialEmote-Front" target="_blank">Kevin Frutos</a></p>
 		</footer>
 	);
 };

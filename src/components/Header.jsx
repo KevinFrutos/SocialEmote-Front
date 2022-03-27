@@ -31,12 +31,11 @@ const Header = () => {
 		try {
 			const respuesta = await logout();
 
-			if (respuesta.status === 200) {
+			if (respuesta === 200) {
 				updateIsLogged(false);
 				setUserData({});
 			} else {
 				updateIsLogged(true);
-				console.log(respuesta.status);
 			}
 		} catch (error) {
 			console.log(error);
