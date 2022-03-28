@@ -13,15 +13,11 @@ import img8 from "../assets/img/avatars/avatar-8.svg";
 
 const Avatar = () => {
 	const imgPaths = [img1, img2, img3, img4, img5, img6, img7, img8];
-	const randomAvatar = Math.floor(Math.random() * (7 - 1 + 1) + 1);
+	const randomAvatar = Math.floor(Math.random() * imgPaths.length);
 
 	return (
 		<>
-			<img
-				className={css.default}
-				src={`${imgPaths[randomAvatar]}`}
-				alt={`Avatar numero ${randomAvatar}`}
-			/>
+			<img className={css.default} src={`${imgPaths[randomAvatar]}`} alt={`Avatar numero ${randomAvatar}`} />
 		</>
 	);
 };
