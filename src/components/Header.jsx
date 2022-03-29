@@ -18,6 +18,7 @@ import Button from "./Button";
 import ImageLink from "./ImageLink";
 import DisplayFollows from "./DisplayFollows";
 import Avatar from "./Avatar";
+import AddPostButton from "./AddPostButton";
 
 //CONTROLLERS
 import { logout, getUserData } from "./controllers/httpRequests";
@@ -85,7 +86,7 @@ const Header = () => {
 					</span>
 					<Button buttonName='LOGOUT' clickHandler={logoutHandler} />
 					<Link className={css.linkStyles} to='/publication'>
-						<Button buttonName='+' />
+						<AddPostButton />
 					</Link>
 				</nav>
 			)}
