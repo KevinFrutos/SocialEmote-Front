@@ -203,3 +203,22 @@ export const unlike = async (idPost, user_like) => {
 		console.log(error);
 	}
 };
+
+export const addComment = async (idPost, comment) => {
+	try {
+		const respuesta = await fetch(`${url}/user/publication/comment`, {
+			method: "POST",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				idPost,
+				comment,
+			}),
+		});
+		return await respuesta.json();
+	} catch (error) {
+		console.log(error);
+	}
+};

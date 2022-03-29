@@ -18,7 +18,7 @@ const Input = ({ labelName, forName, placeholderText, onChangeHandler, isPasswor
 			) : isText === "true" ? (
 				<textarea
 					type='text'
-					className={css.defaultInput}
+					className={`${css.defaultInput} ${css.defaultTextArea}`}
 					name={forName}
 					onChange={onChangeHandler}
 					placeholder={placeholderText}

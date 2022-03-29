@@ -8,9 +8,10 @@ import commentImgPath from "../assets/img/comment.svg";
 
 //COMPONENTS
 import EmoteCounter from "./EmoteCounter";
+import Modal from "./Modal";
 
 //IMPORTS
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 //CONTEXT
 import { UserDataContext } from "./contexts/UserDataContext";
@@ -22,6 +23,7 @@ import { like, unlike } from "./controllers/httpRequests";
 const PostEvents = ({ idPost }) => {
 	const { userData } = useContext(UserDataContext);
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 
 	const postIndex = publicaciones.findIndex(item => item._id === idPost);
 
@@ -43,7 +45,13 @@ const PostEvents = ({ idPost }) => {
 		}
 	};
 
-	const comment = () => {};
+	const comment = () => {
+		setModalIsOpen(true);
+	};
+
+	const closeCommentModal = () => {
+		setModalIsOpen(false);
+	};
 
 	return (
 		<span className={css.defaultContainer}>
@@ -76,6 +84,7 @@ const PostEvents = ({ idPost }) => {
 						altDescription='Caja de comentario flotante de color morado'
 						counter={publicaciones[postIndex].comments.length}
 					/>
+					{modalIsOpen && <Modal idPost={idPost} onClickCloseHandler={closeCommentModal} />}
 				</>
 			) : (
 				<>
@@ -91,6 +100,7 @@ const PostEvents = ({ idPost }) => {
 						altDescription='Caja de comentario flotante de color morado'
 						counter={publicaciones[postIndex].comments.length}
 					/>
+					{modalIsOpen && <Modal idPost={idPost} onClickCloseHandler={closeCommentModal} />}
 				</>
 			)}
 		</span>
