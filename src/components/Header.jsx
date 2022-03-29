@@ -25,13 +25,14 @@ import { logout, getUserData } from "./controllers/httpRequests";
 const Header = () => {
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
 	const { userData, setUserData } = useContext(UserDataContext);
-	const [cookies] = useCookies(["isLogged"]);
+	const [cookies, setCookie, removeCookie] = useCookies(["isLogged"]);
 
 	const logoutHandler = async () => {
 		try {
 			const respuesta = await logout();
 
 			if (respuesta === 200) {
+				removeCookie("isLogged");
 				updateIsLogged(false);
 				setUserData({});
 			} else {

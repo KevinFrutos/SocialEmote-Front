@@ -4,6 +4,7 @@ import css from "./Login.module.css";
 //IMPORTS
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 //CONTEXTS
 import { IsLoggedContext } from "../contexts/IsLoggedContext";
@@ -16,6 +17,7 @@ import Button from "../Button";
 import { login } from "../controllers/httpRequests";
 
 const Login = () => {
+	const [cookies, setCookie] = useCookies();
 	//OTHERS
 	const { updateIsLogged } = useContext(IsLoggedContext);
 	const navigateTo = useNavigate();
@@ -32,6 +34,12 @@ const Login = () => {
 			const respuesta = await login(user, passwd);
 
 			if (respuesta === 200) {
+				setCookie("isLogged", true, {
+					path: "/",
+					sameSite: "none",
+					secure: true,
+					maxAge: 24 * 60 * 60 * 1000,
+				});
 				updateIsLogged(true);
 				navigateTo("/");
 			} else {
