@@ -27,6 +27,7 @@ const PostEvents = ({ idPost }) => {
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [comment, setComment] = useState("");
+	const [errorComment, setErrorComment] = useState("");
 
 	const postIndex = publicaciones.findIndex(item => item._id === idPost);
 
@@ -50,18 +51,28 @@ const PostEvents = ({ idPost }) => {
 
 	const addCommentHandler = async () => {
 		if (comment.length > 256) {
-			return alert("El comentario no puede superar los 256 caracteres");
+			return setErrorComment("El comentario no puede superar los 256 caracteres");
 		}
+		console.log(comment);
 		try {
-			console.log(comment);
 			const respuesta = await addComment(idPost, comment);
 			if (respuesta) {
 				setPublicaciones(respuesta);
+				setComment("");
 				closeCommentModal();
+			} else {
+				setErrorComment("Ha ocurrido un error");
 			}
 		} catch (error) {
 			console.log(error);
 		}
+	};
+
+	const onWriteComment = e => {
+		if (errorComment !== "") {
+			setErrorComment("");
+		}
+		setComment(e.target.value);
 	};
 
 	const openCommentModal = () => {
@@ -69,6 +80,8 @@ const PostEvents = ({ idPost }) => {
 	};
 
 	const closeCommentModal = () => {
+		setComment("");
+		setErrorComment("");
 		setModalIsOpen(false);
 	};
 
@@ -109,9 +122,10 @@ const PostEvents = ({ idPost }) => {
 								labelName='Comentario'
 								forName='comment'
 								placeholderText='Escribe algo bonito aqui 💜'
-								onChangeHandler={e => setComment(e.target.value)}
+								onChangeHandler={e => onWriteComment(e)}
 								isText='true'
 							/>
+							<p className={css.errorComment}>{errorComment}</p>
 							<Button buttonClass={css.submitButton} buttonName='COMENTAR' clickHandler={addCommentHandler} />
 							<Button buttonClass={css.submitButton} buttonName='CANCELAR' clickHandler={closeCommentModal} />
 						</Modal>
@@ -137,9 +151,10 @@ const PostEvents = ({ idPost }) => {
 								labelName='Comentario'
 								forName='comment'
 								placeholderText='Escribe algo bonito aqui 💜'
-								onChangeHandler={e => setComment(e.target.value)}
+								onChangeHandler={e => onWriteComment(e)}
 								isText='true'
 							/>
+							<p className={css.errorComment}>{errorComment}</p>
 							<Button buttonClass={css.submitButton} buttonName='COMENTAR' clickHandler={addCommentHandler} />
 							<Button buttonClass={css.submitButton} buttonName='CANCELAR' clickHandler={closeCommentModal} />
 						</Modal>

@@ -12,3 +12,9 @@
 	margin-top: 10px;
 	cursor: pointer;
 }
+
+.errorComment{
+	margin: 0;
+	color: var(--error-color);
+	font-size: 1em;
+}
