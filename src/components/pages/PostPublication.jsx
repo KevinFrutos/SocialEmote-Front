@@ -21,11 +21,18 @@ const PostPublication = () => {
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const addPublicationHandler = async () => {
-		const respuesta = await addPublication(description);
-		if (respuesta === 200) {
-			navigateTo("/");
-		} else {
-			setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
+		if (description.length > 256) {
+			return setErrorMessage("La descripción no puede superar los 256 caracteres.");
+		}
+		try {
+			const respuesta = await addPublication(description);
+			if (respuesta === 200) {
+				navigateTo("/");
+			} else {
+				setErrorMessage("Ha habido un problema, intentelo de nuevo mas tarde.");
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	};
 

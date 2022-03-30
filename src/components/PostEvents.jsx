@@ -9,6 +9,8 @@ import commentImgPath from "../assets/img/comment.svg";
 //COMPONENTS
 import EmoteCounter from "./EmoteCounter";
 import Modal from "./Modal";
+import Input from "./Input";
+import Button from "./Button";
 
 //IMPORTS
 import { useContext, useState } from "react";
@@ -18,12 +20,13 @@ import { UserDataContext } from "./contexts/UserDataContext";
 import { PublicationsDataContext } from "./contexts/PublicationsContext";
 
 //CONTROLLERS
-import { like, unlike } from "./controllers/httpRequests";
+import { like, unlike, addComment } from "./controllers/httpRequests";
 
 const PostEvents = ({ idPost }) => {
 	const { userData } = useContext(UserDataContext);
 	const { publicaciones, setPublicaciones } = useContext(PublicationsDataContext);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [comment, setComment] = useState("");
 
 	const postIndex = publicaciones.findIndex(item => item._id === idPost);
 
@@ -45,7 +48,23 @@ const PostEvents = ({ idPost }) => {
 		}
 	};
 
-	const comment = () => {
+	const addCommentHandler = async () => {
+		if (comment.length > 256) {
+			return alert("El comentario no puede superar los 256 caracteres");
+		}
+		try {
+			console.log(comment);
+			const respuesta = await addComment(idPost, comment);
+			if (respuesta) {
+				setPublicaciones(respuesta);
+				closeCommentModal();
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const openCommentModal = () => {
 		setModalIsOpen(true);
 	};
 
@@ -79,12 +98,24 @@ const PostEvents = ({ idPost }) => {
 						counter={publicaciones[postIndex].likes.length}
 					/>
 					<EmoteCounter
-						onClickHandler={comment}
+						onClickHandler={openCommentModal}
 						imgPath={commentImgPath}
 						altDescription='Caja de comentario flotante de color morado'
 						counter={publicaciones[postIndex].comments.length}
 					/>
-					{modalIsOpen && <Modal idPost={idPost} onClickCloseHandler={closeCommentModal} />}
+					{modalIsOpen && (
+						<Modal idPost={idPost} closeCommentModal={closeCommentModal}>
+							<Input
+								labelName='Comentario'
+								forName='comment'
+								placeholderText='Escribe algo bonito aqui 💜'
+								onChangeHandler={e => setComment(e.target.value)}
+								isText='true'
+							/>
+							<Button buttonClass={css.submitButton} buttonName='COMENTAR' clickHandler={addCommentHandler} />
+							<Button buttonClass={css.submitButton} buttonName='CANCELAR' clickHandler={closeCommentModal} />
+						</Modal>
+					)}
 				</>
 			) : (
 				<>
@@ -95,12 +126,24 @@ const PostEvents = ({ idPost }) => {
 						counter={publicaciones[postIndex].likes.length}
 					/>
 					<EmoteCounter
-						onClickHandler={comment}
+						onClickHandler={openCommentModal}
 						imgPath={commentImgPath}
 						altDescription='Caja de comentario flotante de color morado'
 						counter={publicaciones[postIndex].comments.length}
 					/>
-					{modalIsOpen && <Modal idPost={idPost} onClickCloseHandler={closeCommentModal} />}
+					{modalIsOpen && (
+						<Modal idPost={idPost} closeCommentModal={closeCommentModal}>
+							<Input
+								labelName='Comentario'
+								forName='comment'
+								placeholderText='Escribe algo bonito aqui 💜'
+								onChangeHandler={e => setComment(e.target.value)}
+								isText='true'
+							/>
+							<Button buttonClass={css.submitButton} buttonName='COMENTAR' clickHandler={addCommentHandler} />
+							<Button buttonClass={css.submitButton} buttonName='CANCELAR' clickHandler={closeCommentModal} />
+						</Modal>
+					)}
 				</>
 			)}
 		</span>

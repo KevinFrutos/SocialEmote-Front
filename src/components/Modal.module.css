@@ -9,7 +9,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    overflow: hidden;
 }
 
 .defaultModal {
@@ -19,11 +18,4 @@
 	width: 500px;
 	max-width: 90%;
 	box-shadow: 0px 0px 10px var(--default-modal-color);
-}
-
-.submitButton {
-	text-align: center;
-	border-radius: 5px;
-	margin-top: 10px;
-	cursor: pointer;
 }
