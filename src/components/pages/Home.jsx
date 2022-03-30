@@ -28,7 +28,15 @@ const Home = () => {
 	return (
 		<section className={css.default}>
 			{publicaciones.map(item => {
-				return <Publication key={item._id} idPost={item._id} user={item.user} description={item.description} />;
+				return (
+					<Publication
+						key={item._id}
+						idPost={item._id}
+						user={item.user}
+						description={item.description}
+						descriptionHandler={true}
+					/>
+				);
 			})}
 		</section>
 	);

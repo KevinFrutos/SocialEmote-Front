@@ -6,7 +6,16 @@ import Avatar from "./Avatar";
 import PostEvents from "./PostEvents";
 import OpcionesPost from "./OpcionesPost";
 
-const Publication = ({ idPost, user, description }) => {
+//IMPORTS
+import { useNavigate } from "react-router-dom";
+
+const Publication = ({ idPost, user, description, descriptionHandler }) => {
+	const navigate = useNavigate();
+
+	const openPostHandler = () => {
+		navigate(`/post/${idPost}`);
+	};
+
 	return (
 		<article className={css.default}>
 			<span className={css.userContainer}>
@@ -16,7 +25,14 @@ const Publication = ({ idPost, user, description }) => {
 				</span>
 				<OpcionesPost user={user} idPost={idPost} />
 			</span>
-			<span className={css.description}>{description}</span>
+			{descriptionHandler ? (
+				<span className={css.description} onClick={openPostHandler}>
+					{description}
+				</span>
+			) : (
+				<span className={css.description}>{description}</span>
+			)}
+
 			<PostEvents idPost={idPost} />
 		</article>
 	);

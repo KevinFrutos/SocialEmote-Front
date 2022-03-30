@@ -8,6 +8,11 @@
 	border-radius: 1em;
 }
 
+.default:hover {
+	background-color: #111;
+	cursor: pointer;
+}
+
 .userContainer {
 	display: flex;
 	align-items: center;

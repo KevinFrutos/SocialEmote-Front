@@ -17,6 +17,7 @@ import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import PostPublication from "./components/pages/PostPublication";
 import Profile from "./components/pages/Profile";
+import Post from "./components/pages/Post";
 
 const App = () => {
 	return (
@@ -31,6 +32,7 @@ const App = () => {
 							<Route path='/register' element={<Register />} />
 							<Route path='/publication' element={<PostPublication />} />
 							<Route path='/profile' element={<Profile />} />
+							<Route path='/post/:idPost' element={<Post />} />
 						</Routes>
 						<Footer />
 					</Router>

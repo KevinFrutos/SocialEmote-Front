@@ -93,13 +93,13 @@ const PostEvents = ({ idPost }) => {
 						toPath='/login'
 						imgPath={likeImgPath}
 						altDescription='Corazón con carita sonriente'
-						counter={publicaciones[postIndex].likes.length}
+						counter={publicaciones[postIndex]?.likes.length}
 					/>
 					<EmoteCounter
 						toPath='/login'
 						imgPath={commentImgPath}
 						altDescription='Caja de comentario flotante de color morado'
-						counter={publicaciones[postIndex].comments.length}
+						counter={publicaciones[postIndex]?.comments.length}
 					/>
 				</>
 			) : userData.user && !publicaciones[postIndex].likes.map(item => item.user_like).includes(userData.user) ? (
@@ -108,13 +108,13 @@ const PostEvents = ({ idPost }) => {
 						onClickHandler={likeHandler}
 						imgPath={likeImgPath}
 						altDescription='Corazón con carita sonriente'
-						counter={publicaciones[postIndex].likes.length}
+						counter={publicaciones[postIndex]?.likes.length}
 					/>
 					<EmoteCounter
 						onClickHandler={openCommentModal}
 						imgPath={commentImgPath}
 						altDescription='Caja de comentario flotante de color morado'
-						counter={publicaciones[postIndex].comments.length}
+						counter={publicaciones[postIndex]?.comments.length}
 					/>
 					{modalIsOpen && (
 						<Modal idPost={idPost} closeCommentModal={closeCommentModal}>
@@ -137,13 +137,13 @@ const PostEvents = ({ idPost }) => {
 						onClickHandler={unlikeHandler}
 						imgPath={unlikeImgPath}
 						altDescription='Corazón con carita enfadada'
-						counter={publicaciones[postIndex].likes.length}
+						counter={publicaciones[postIndex]?.likes.length}
 					/>
 					<EmoteCounter
 						onClickHandler={openCommentModal}
 						imgPath={commentImgPath}
 						altDescription='Caja de comentario flotante de color morado'
-						counter={publicaciones[postIndex].comments.length}
+						counter={publicaciones[postIndex]?.comments.length}
 					/>
 					{modalIsOpen && (
 						<Modal idPost={idPost} closeCommentModal={closeCommentModal}>
