@@ -19,12 +19,11 @@ const Post = () => {
 	const [post, setPost] = useState({});
 
 	useEffect(() => {
-        if (publicaciones.length === 0) {
-            return navigateTo("/");
+		if (publicaciones.length === 0) {
+			return navigateTo("/");
 		}
 		const post = publicaciones.find(item => item._id === idPost);
 		setPost(post);
-        console.log(post);
 	});
 
 	return (
@@ -32,7 +31,8 @@ const Post = () => {
 			<section className={css.default}>
 				<Publication idPost={idPost} user={post.user} description={post.description} />
 				{post.comments &&
-					post.comments.map(item => (
+					//COPIO EL ARRAY DE COMENTARIOS PARA PODER MODIFICARLO
+					[...post.comments].reverse().map(item => (
 						<article className={css.comment} key={item._id}>
 							<span className={css.user}>
 								<Avatar />
