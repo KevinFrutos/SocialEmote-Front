@@ -18,6 +18,7 @@ import Register from "./components/pages/Register";
 import PostPublication from "./components/pages/PostPublication";
 import Profile from "./components/pages/Profile";
 import Post from "./components/pages/Post";
+import WebSocketConnection from "./components/WebSocketConnection";
 
 const App = () => {
 	return (
@@ -35,6 +36,7 @@ const App = () => {
 							<Route path='/post/:idPost' element={<Post />} />
 						</Routes>
 						<Footer />
+						<WebSocketConnection />
 					</Router>
 				</PublicationsContext>
 			</UserContext>

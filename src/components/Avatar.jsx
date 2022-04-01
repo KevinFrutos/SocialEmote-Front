@@ -11,6 +11,9 @@ import img6 from "../assets/img/avatars/avatar-6.svg";
 import img7 from "../assets/img/avatars/avatar-7.svg";
 import img8 from "../assets/img/avatars/avatar-8.svg";
 
+//IMPORTS
+import { memo } from "react";
+
 const Avatar = () => {
 	const imgPaths = [img1, img2, img3, img4, img5, img6, img7, img8];
 	const randomAvatar = Math.floor(Math.random() * imgPaths.length);
@@ -22,4 +25,4 @@ const Avatar = () => {
 	);
 };
 
-export default Avatar;
+export default memo(Avatar);
