@@ -8,7 +8,7 @@ import { IsLoggedContext } from "./contexts/IsLoggedContext";
 import { UserDataContext } from "./contexts/UserDataContext";
 
 //CONTROLLERS
-import { wsUrl } from "./controllers/httpRequests";
+import { wsUrl, logout } from "./controllers/httpRequests";
 
 const WebSocketConnection = () => {
 	const { setPublicaciones } = useContext(PublicationsDataContext);
@@ -22,15 +22,20 @@ const WebSocketConnection = () => {
 		// POR LO QUE SE VUELVE A "CREAR" LA CONEXION CONTINUAMENTE
 		// ARREGLARLO...
 		const ws = new WebSocket(wsUrl);
-		ws.onmessage = event => {
+		ws.onmessage = async event => {
 			const data = JSON.parse(event.data);
 			//console.log(data);
 			if (data.type === "publicaciones") {
 				setPublicaciones(data.publicaciones);
 			} else if (data.type === "session") {
-				removeCookie("isLogged");
-				updateIsLogged(false);
-				setUserData({});
+				try {
+					removeCookie("isLogged");
+					updateIsLogged(false);
+					setUserData({});
+					await logout();
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		};
 	});
