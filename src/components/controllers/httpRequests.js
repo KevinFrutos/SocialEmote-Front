@@ -1,5 +1,4 @@
-//const url = "https://api-socialemote.herokuapp.com";
-const url = "http://social_emote_api:9000";
+import { url } from "./env";
 
 // USER
 export const registrarse = async (user, name, last_name, email, passwd) => {
