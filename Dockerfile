@@ -10,10 +10,6 @@ COPY . .
 
 RUN echo 'export const url = "https://socialemoteapi.duckdns.org";' > /app/src/components/controllers/env.js
 
-RUN npm run build
-
-RUN pwd
-
-RUN ls
+CMD ["npm", "run", "build"]
 
 EXPOSE 80
