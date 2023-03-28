@@ -6,9 +6,10 @@ COPY package*.json /app
 
 RUN npm install
 
+COPY . .
+
 RUN npm run build
 
-COPY dist/assets .
-COPY dist/index.html .
+WORKDIR dist
 
 EXPOSE 80
