@@ -8,6 +8,6 @@ RUN npm install
 
 CMD ["npm", "run", "build"]
 
-COPY dist/* .
+COPY dist/ .
 
 EXPOSE 80
