@@ -6,9 +6,9 @@ COPY package*.json /app
 
 RUN npm install
 
-CMD ["npm", "run", "build"]
+RUN npm run build
 
-COPY dist/assets /app/assets
-COPY dist/index.html /app
+COPY dist/assets .
+COPY dist/index.html .
 
 EXPOSE 80
