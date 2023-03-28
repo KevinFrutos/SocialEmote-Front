@@ -6,8 +6,8 @@ COPY package*.json /app
 
 RUN npm install
 
-COPY . .
+CMD ["npm", "run", "build"]
+
+COPY ./dist .
 
 EXPOSE 80
-
-CMD ["npm", "run", "dev"]
