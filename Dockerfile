@@ -9,6 +9,6 @@ RUN npm install
 CMD ["npm", "run", "build"]
 
 COPY dist/assets /app/assets
-COPY dist/index.html /app/index.html
+COPY dist/index.html /app
 
 EXPOSE 80
