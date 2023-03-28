@@ -12,4 +12,8 @@ RUN echo 'export const url = "https://socialemoteapi.duckdns.org";' > /app/src/c
 
 RUN npm run build
 
+RUN pwd
+
+RUN ls
+
 EXPOSE 80
