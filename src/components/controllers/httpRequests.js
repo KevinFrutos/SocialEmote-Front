@@ -1,4 +1,4 @@
-import { url } from "./env.js";
+import { url } from "./env";
 
 // USER
 export const registrarse = async (user, name, last_name, email, passwd) => {
