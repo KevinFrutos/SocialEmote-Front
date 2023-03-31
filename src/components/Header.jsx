@@ -6,7 +6,7 @@ import logoPath from "../assets/img/icon.svg";
 
 //IMPORTS
 import { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 //CONTEXTS
@@ -24,6 +24,7 @@ import AddPostButton from "./AddPostButton";
 import { logout, getUserData } from "./controllers/httpRequests";
 
 const Header = () => {
+	const navigateTo = useNavigate();
 	const { isLogged, updateIsLogged } = useContext(IsLoggedContext);
 	const { userData, setUserData } = useContext(UserDataContext);
 	const [cookies, setCookie, removeCookie] = useCookies(["isLogged"]);
@@ -39,6 +40,7 @@ const Header = () => {
 			} else {
 				updateIsLogged(true);
 			}
+			navigateTo("/");
 		} catch (error) {
 			console.log(error);
 		}
